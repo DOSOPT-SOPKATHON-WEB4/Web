@@ -97,14 +97,14 @@
 ## 🎋 브랜치 전략
 
 - 브랜치 전략
-  - `**feature/페이지명**`
-    - feature/SelectPage (파스칼)
-  - `**페이지명/기능설명`\*\*
-    - SelectPage/ui-publishing (-로 연결)
+  - `feature/담당자명`
+    - feature/SeungHee (파스칼)
+  - `담당자명/기능설명`
+    - SeungHee/ui-publishing (-로 연결)
   ```js
   develop
-  ㄴ feature/SelectPage
-  	ㄴ SelectPage/ui-publishing
+  ㄴ feature/SeungHee
+  	ㄴ SeungHee/ui-publishing
   ```
 - 🚨 반드시 **직속 상위 브랜치**로 머지
 - ❌ 이번 솝커톤에서는 빠른 작업을 위해 issue를 사용하지 않습니다!
@@ -116,13 +116,13 @@
 
 | 커밋         | 역할                                                                  |
 | ------------ | --------------------------------------------------------------------- |
-| [ feat ]     | 기능 구현과 관련된 커밋                                               |
-| [ style ]    | 코드 순서, css등의 포맷에 관한 커밋 (기능에 변화X)                    |
-| [ design ]   | UI 구현 (css 구체화) 커밋                                             |
-| [ fix ]      | 버그를 고친 경우                                                      |
-| [ refactor ] | 더 좋은 코드로 개선한 경우 (기능에 변화가 없는 경우) ex-코드리뷰 반영 |
-| [ docs ]     | README.md 등 문서를 작성한 경우                                       |
-| [ chore ]    | 주석 추가, 자잘한 문서 수정                                           |
+| feat    | 기능 구현과 관련된 커밋                                               |
+| style   | 코드 순서, css등의 포맷에 관한 커밋 (기능에 변화X)                    |
+| design   | UI 구현 (css 구체화) 커밋                                             |
+| fix    | 버그를 고친 경우                                                      |
+| refactor | 더 좋은 코드로 개선한 경우 (기능에 변화가 없는 경우) ex-코드리뷰 반영 |
+| docs      | README.md 등 문서를 작성한 경우                                       |
+| chore    | 주석 추가, 자잘한 문서 수정                                           |
 
 <br/>
 
@@ -202,12 +202,19 @@ custom hooks 정의하는 경우 이곳에서 정의 후 사용
 | Version Control      | ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)  |
 
 <br />
-<br />
-<h2> 💡 주요 라이브러리 </h2>
+
+## 💡 주요 라이브러리
 
 ```
 "vite-plugin-svgr": "^4.2.0"
 ```
+
+## 👨‍👧‍👧 우리만의 그라운드룰
+- `div`남발하지 않고 최대한 시멘틱한 태그를 사용하도록 노력하자
+- 솝커톤 환경 특성상 난이도/볼륨에 대해 적극적으로 의견을 나누자
+- 타파트/자신파트의 결정사항에 있어서 조금이라도 불확실한 부분은 **반드시!! 확실하게 짚고 넘어가** 🚨
+- 리프레시 타임을 가지자♻️ : 2시간에 한번씩 5분! 일어나서 움직이고, 스트레칭하고, 산소 공급합시다 
+
 
 ## 🎀 시연 영상
 
