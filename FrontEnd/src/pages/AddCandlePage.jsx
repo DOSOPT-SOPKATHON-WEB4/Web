@@ -23,7 +23,7 @@ const AddCandlePage = () => {
     <St.Wrapper>
       <div>
         <St.Header>
-          <IcBack />
+          <IcBack onClick={() => setStep(step - 1)} />
           <St.ProgressBar>
             {progressArray
               .map((_, idx) => step === idx)
