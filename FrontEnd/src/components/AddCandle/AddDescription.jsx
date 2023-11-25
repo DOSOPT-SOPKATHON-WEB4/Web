@@ -30,7 +30,12 @@ const St = {
     ${({ theme }) => theme.shadow.shadow};
 
     ${({ theme }) => theme.fonts.b1};
-    color: ${({ theme }) => theme.colors.gray4};
+
+    color: ${({ theme }) => theme.colors.black};
+
+    &::placeholder {
+      color: ${({ theme }) => theme.colors.gray4};
+    }
 
     resize: none;
   `,
