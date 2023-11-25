@@ -5,19 +5,19 @@ import styled, { css } from 'styled-components';
 import axios from 'axios';
 
 const Cake = (props) => {
-  const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 0.5, 0]);
+  const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
   const [, setIsBurned] = useState(false);
   // eslint-disable-next-line react/prop-types
-  const { title } = props;
+  const { title, setTitle } = props;
 
   // 촛불 불러오는 api
   const getCandle = () => {
     axios
-      .get(`www.sopt-web4.o-r.kr/candle?cakeId=SOPT`, {
+      .get(`https://sopt-web4.o-r.kr/cake/16`, {
         headers: 'Content-Type: application/json',
       })
       .then((res) => {
-        console.log(res);
+        setTitle(res.data.data.cake_title);
       })
       .catch((err) => {
         console.log(err);
@@ -36,6 +36,8 @@ const Cake = (props) => {
 
     if (checkedCandlePosition[randomNum - 1] === 0.5) {
       setIsBurned(true);
+    } else {
+      setIsBurned(false);
     }
 
     const temp = [...checkedCandlePosition];
@@ -57,30 +59,28 @@ const Cake = (props) => {
           );
         if (it === 0.5)
           return (
-            <>
-              <St.Candle
-                key={idx}
-                src='../public/candle_off_2.png'
-                $left={CANDLE_POSITION[idx].left}
-                $bottom={CANDLE_POSITION[idx].bottom}
-              />
-
-              <St.Cake src='../public/cake_view9.png' />
-            </>
+            <St.Candle
+              key={idx}
+              src='../public/candle_off_2.png'
+              $left={CANDLE_POSITION[idx].left}
+              $bottom={CANDLE_POSITION[idx].bottom}
+            />
           );
       })}
-
-      <St.Toast>사라져가는 촛불이 있어요, 촛불을 눌러서 다시 살려주세요!</St.Toast>
+      <St.Cake src='../public/cake_view9.png' />;
+      {/* <St.Toast>사라져가는 촛불이 있어요, 촛불을 눌러서 다시 살려주세요!</St.Toast> */}
     </St.Container>
   );
 };
 
 const St = {
   Container: styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rem;
+
     position: relative;
     width: 32rem;
     height: 28.2rem;
@@ -102,10 +102,9 @@ const St = {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -15rem;
 
     position: absolute;
-    top: 0;
+    top: -20rem;
 
     padding: 0.8rem;
     border-radius: 1.2rem;

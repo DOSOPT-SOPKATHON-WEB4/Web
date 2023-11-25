@@ -1,34 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-const DUMMY = ['시원', 'SOPT', '승희'];
+const DUMMY = ['시원', 'SOPT', '승희', '다민', '뽀삐'];
 
 const SelectCategory = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { setTitle } = props;
-  //   const [isClicked, setIsClicked] = useState(false);
-  const [clickedValue, setClickedValue] = useState('');
+  const { title } = props;
+  const [, setClickedValue] = useState('');
+  const navigator = useNavigate();
 
   const handleClickedBtn = (e) => {
     setClickedValue(e.target.innerHTML);
-    // setTitle(e.target.innerHTML);
   };
 
-  useEffect(() => {
-    // setTitle('SOPT');
-    setTitle(clickedValue);
-  }, [clickedValue]);
+  const handleClickAddBtn = () => {
+    navigator('/add-tag');
+  };
 
   return (
     <St.BottomContainer>
-      <St.AddBtn>+</St.AddBtn>
+      <St.AddBtn onClick={handleClickAddBtn}>+</St.AddBtn>
       {DUMMY.map((it, idx) => {
         return (
-          <St.NameBtn
-            key={idx}
-            $isClicked={clickedValue === it}
-            onClick={(e) => handleClickedBtn(e)}
-          >
+          <St.NameBtn key={idx} $isClicked={it === title} onClick={(e) => handleClickedBtn(e)}>
             {it}
           </St.NameBtn>
         );

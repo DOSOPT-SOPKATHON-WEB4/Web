@@ -27,6 +27,8 @@ const St = {
     top: 0;
     left: 0;
     margin-left: 1.2rem;
+
+    gap: 1rem;
   `,
 
   HeaderContents: styled.div`

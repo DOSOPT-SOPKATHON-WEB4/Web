@@ -9,8 +9,8 @@ const CakePage = () => {
   return (
     <St.CakePageContainer>
       <Header title={title} />
-      <Cake title={title} />
-      <SelectCategory setTitle={setTitle} />
+      <Cake title={title} setTitle={setTitle} />
+      <SelectCategory title={title} />
     </St.CakePageContainer>
   );
 };
