@@ -18,7 +18,7 @@ const colors = {
   gray6: '#F4F4F4',
 };
 const fonts = {
-  H1: css`
+  h1: css`
     font-family: 'Pretendard Variable';
     font-size: 3.4rem;
     font-style: normal;
@@ -26,7 +26,7 @@ const fonts = {
     line-height: normal;
     letter-spacing: -0.085rem;
   `,
-  H2: css`
+  h2: css`
     font-family: 'Pretendard Variable';
     font-size: 2.8rem;
     font-style: normal;
@@ -57,7 +57,7 @@ const fonts = {
     line-height: normal;
     letter-spacing: -0.08rem;
   `,
-  B1: css`
+  b1: css`
     font-family: 'Pretendard Variable';
     font-size: 1.6rem;
     font-style: normal;
@@ -65,7 +65,7 @@ const fonts = {
     line-height: normal;
     letter-spacing: 0.032rem;
   `,
-  B2: css`
+  b2: css`
     font-family: 'Pretendard Variable';
     font-size: 1.5rem;
     font-style: normal;
