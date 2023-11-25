@@ -6,7 +6,12 @@ const DUMMY = ['시원', 'SOPT', '승희', '시원', 'SOPT', '승희'];
 const SelectCategory = (props) => {
   // eslint-disable-next-line react/prop-types
   const { setTitle } = props;
-  const [isClicked, setIsClicked] = useState(false);
+  //   const [isClicked, setIsClicked] = useState(false);
+  const [clickedValue, setClickedValue] = useState('');
+
+  const handleClickedBtn = (e) => {
+    setClickedValue(e.target.innerHTML);
+  };
 
   useEffect(() => {
     setTitle('SOPT');
@@ -17,7 +22,11 @@ const SelectCategory = (props) => {
       <St.AddBtn>+</St.AddBtn>
       {DUMMY.map((it, idx) => {
         return (
-          <St.NameBtn key={idx} $isClicked={isClicked} onClick={() => setIsClicked(!isClicked)}>
+          <St.NameBtn
+            key={idx}
+            $isClicked={clickedValue === it}
+            onClick={(e) => handleClickedBtn(e)}
+          >
             {it}
           </St.NameBtn>
         );
