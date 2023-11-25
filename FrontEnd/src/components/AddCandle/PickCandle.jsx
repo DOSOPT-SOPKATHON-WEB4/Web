@@ -13,25 +13,30 @@ import {
 } from '../../assets';
 import { useState } from 'react';
 
-const PickCandle = () => {
+const PickCandle = ({ setFeel }) => {
   const CANDLE = [
     {
+      feel: 'A',
       default: <IcCandle1 />,
       picked: <IcCandle1Picked />,
     },
     {
+      feel: 'B',
       default: <IcCandle2 />,
       picked: <IcCandle2Picked />,
     },
     {
+      feel: 'C',
       default: <IcCandle3 />,
       picked: <IcCandle3Picked />,
     },
     {
+      feel: 'D',
       default: <IcCandle4 />,
       picked: <IcCandle4Picked />,
     },
     {
+      feel: 'E',
       default: <IcCandle5 />,
       picked: <IcCandle5Picked />,
     },
@@ -44,7 +49,10 @@ const PickCandle = () => {
         idx === selectedCandle ? (
           <St.Candle
             key={`${idx}`}
-            onClick={() => setSelectedCandle(idx)}
+            onClick={() => {
+              setSelectedCandle(idx);
+              setFeel(candle.feel);
+            }}
             $isSelected={idx === selectedCandle}
           >
             {candle.picked}
@@ -52,7 +60,10 @@ const PickCandle = () => {
         ) : (
           <St.Candle
             key={`${idx}picked`}
-            onClick={() => setSelectedCandle(idx)}
+            onClick={() => {
+              setSelectedCandle(idx);
+              setFeel(candle.feel);
+            }}
             $isSelected={idx === selectedCandle}
           >
             {candle.default}

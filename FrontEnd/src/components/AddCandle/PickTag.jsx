@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const PickTag = () => {
+const PickTag = ({ cakeTitle, setCakeTitle }) => {
   const TAG = ['시원', 'SOPT', '승희', '다민', '가족', '뽀삐와 산책'];
-  const [selectedTag, setSelectedTag] = useState('');
 
   return (
     <St.Wrapper>
@@ -12,9 +11,9 @@ const PickTag = () => {
           type='button'
           key={idx}
           onClick={() => {
-            setSelectedTag(el);
+            setCakeTitle(el);
           }}
-          $isSelected={selectedTag === el}
+          $isSelected={cakeTitle === el}
         >
           {el}
         </St.Card>
