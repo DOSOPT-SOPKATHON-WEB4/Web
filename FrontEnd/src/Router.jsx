@@ -6,6 +6,7 @@ import CakePage from './pages/CakePage';
 import OnboardingPage from './pages/OnboardingPage';
 import CandleDetailPage from './pages/CandleDetailPage';
 
+import CreateCakePage from './pages/CreateCakePage';
 const Router = () => {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ const Router = () => {
         <Route path='/' element={<OnboardingPage />} />
         <Route path='/main' element={<MainPage />} />
         <Route path='/add-tag' element={<AddTagPage />} />
+        <Route path='/add-cake' element={<CreateCakePage />} />
         <Route path='/add-candle' element={<AddCandlePage />} />
         <Route path='/cake' element={<CakePage />} />
         <Route path='/candle-detail' element={<CandleDetailPage />} />
