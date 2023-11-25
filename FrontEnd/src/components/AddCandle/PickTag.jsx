@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const PickTag = () => {
   const TAG = ['시원', 'SOPT', '승희', '다민', '가족', '뽀삐와 산책'];
