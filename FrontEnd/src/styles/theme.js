@@ -1,5 +1,10 @@
 import { css } from 'styled-components';
 
+const shadow = {
+  shadow: css`
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+  `,
+};
 const colors = {
   purple: '#c274ff',
   pink: '#FF748D',
@@ -88,7 +93,9 @@ const fonts = {
     line-height: normal;
   `,
 };
+
 const theme = {
+  shadow,
   colors,
   fonts,
 };
