@@ -1,20 +1,36 @@
 import styled from 'styled-components';
 import { IcBack, IcProgressGrey, IcProgressRed } from '../assets';
+import { useState } from 'react';
 
 const AddCandlePage = () => {
   // 스텝에 따라서 IcProgress 조건부 렌더링 시키기
+  const [step, setStep] = useState(0);
+  const progressArray = new Array(5).fill(false);
+
   return (
     <St.Wrapper>
-      <St.Header>
-        <IcBack />
-        <St.ProgressBar>
-          <IcProgressRed />
-          <IcProgressGrey />
-          <IcProgressGrey />
-          <IcProgressGrey />
-          <IcProgressGrey />
-        </St.ProgressBar>
-      </St.Header>
+      <div>
+        <St.Header>
+          <IcBack />
+          <St.ProgressBar>
+            {progressArray
+              .map((_, idx) => step === idx)
+              .map((val, idx) =>
+                val ? <IcProgressRed key={idx} /> : <IcProgressGrey key={idx} />,
+              )}
+          </St.ProgressBar>
+        </St.Header>
+        <St.Description>기록하고 싶은 날짜를 입력해 주세요</St.Description>
+      </div>
+
+      <St.Button
+        type='button'
+        onClick={() => {
+          setStep(step + 1);
+        }}
+      >
+        다음
+      </St.Button>
     </St.Wrapper>
   );
 };
@@ -22,10 +38,16 @@ const AddCandlePage = () => {
 export default AddCandlePage;
 
 const St = {
-  Wrapper: styled.section``,
-  Header: styled.header`
-    border: 1px solid red;
+  Wrapper: styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
+    width: 100vw;
+    height: 100vh;
+    padding: 0 2rem 2.6rem 2rem;
+  `,
+  Header: styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,5 +65,20 @@ const St = {
   ProgressBar: styled.div`
     display: flex;
     gap: 1.4rem;
+  `,
+  Description: styled.h1`
+    margin: 1.3rem 0 0 0.5rem;
+    ${({ theme }) => theme.fonts.s2};
+  `,
+  Button: styled.button`
+    padding: 1.6rem 0rem;
+    width: 100%;
+
+    border: 0.2rem solid ${({ theme }) => theme.colors.red};
+    border-radius: 10rem;
+    background-color: ${({ theme }) => theme.colors.white};
+
+    color: ${({ theme }) => theme.colors.red};
+    ${({ theme }) => theme.fonts.s3};
   `,
 };
