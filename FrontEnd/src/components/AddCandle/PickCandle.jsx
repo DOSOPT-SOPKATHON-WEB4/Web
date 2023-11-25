@@ -47,14 +47,7 @@ const PickCandle = ({ setFeel }) => {
     <St.Wrapper>
       {CANDLE.map((candle, idx) =>
         idx === selectedCandle ? (
-          <St.Candle
-            key={`${idx}`}
-            onClick={() => {
-              setSelectedCandle(idx);
-              setFeel(candle.feel);
-            }}
-            $isSelected={idx === selectedCandle}
-          >
+          <St.Candle key={`${idx}`} $isSelected={idx === selectedCandle}>
             {candle.picked}
           </St.Candle>
         ) : (

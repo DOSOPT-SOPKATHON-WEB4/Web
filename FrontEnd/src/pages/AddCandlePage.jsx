@@ -44,7 +44,7 @@ const AddCandlePage = () => {
         <St.Description>{DESCRIPTION[step]}</St.Description>
       </div>
       {step === 5 ? (
-        <Complete title={title} date={date} cakeTitle={cakeTitle} feel={feel} body={body} />
+        <Complete title={title} cakeTitle={cakeTitle} feel={feel} body={body} />
       ) : (
         childrenArray[step % 5]
       )}

@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
-const AddDescription = () => {
+const AddDescription = ({ setBody }) => {
   return (
     <St.Wrapper>
-      <St.Text placeholder='기념일에 어떤 일이 있었나요? ' />
+      <St.Text
+        placeholder='기념일에 어떤 일이 있었나요? '
+        onChange={(e) => setBody(e.target.value)}
+      />
     </St.Wrapper>
   );
 };
