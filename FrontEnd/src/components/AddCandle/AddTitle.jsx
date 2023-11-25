@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
-const AddTitle = () => {
+const AddTitle = ({ setTitle }) => {
+  function handleInput(e) {
+    setTitle(e.target.value);
+  }
   return (
     <St.Wrapper>
       <img src='/src/assets/image/img_title.png' />
-      <St.Input type='text' />
+      <St.Input type='text' onChange={handleInput} />
     </St.Wrapper>
   );
 };

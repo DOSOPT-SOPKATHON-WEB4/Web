@@ -12,6 +12,7 @@ import IcCandle2Picked from './icon/ic_candle2_picked.svg?react';
 import IcCandle3Picked from './icon/ic_candle3_picked.svg?react';
 import IcCandle4Picked from './icon/ic_candle4_picked.svg?react';
 import IcCandle5Picked from './icon/ic_candle5_picked.svg?react';
+import IcComplete from './icon/ic_complete.svg?react';
 
 export {
   IcBack,
@@ -27,4 +28,5 @@ export {
   IcCandle3Picked,
   IcCandle4Picked,
   IcCandle5Picked,
+  IcComplete,
 };
