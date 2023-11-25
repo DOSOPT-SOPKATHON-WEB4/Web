@@ -1,19 +1,29 @@
 import styled from 'styled-components';
 import { IcBack, IcProgressGrey, IcProgressRed } from '../assets';
 import { useState } from 'react';
-//import { TITLE, DESCRIPTION } from '../constants/addCandle';
 import { TITLE, DESCRIPTION } from '../constants/addCandle';
+import AddDescription from '../components/AddCandle/AddDescription';
+import PickDate from '../components/AddCandle/PickDate';
+import PickTag from '../components/AddCandle/PickTag';
+import AddTitle from '../components/AddCandle/AddTitle';
+import PickCandle from '../components/AddCandle/PickCandle';
 
 const AddCandlePage = () => {
-  // 스텝에 따라서 IcProgress 조건부 렌더링 시키기
   const [step, setStep] = useState(0);
   const progressArray = new Array(5).fill(false);
+  const childrenArray = [
+    <PickDate key={0} />,
+    <PickTag key={1} />,
+    <AddTitle key={2} />,
+    <PickCandle key={3} />,
+    <AddDescription key={4} />,
+  ];
 
   return (
     <St.Wrapper>
       <div>
         <St.Header>
-          <IcBack />
+          <IcBack onClick={() => setStep(step - 1)} />
           <St.ProgressBar>
             {progressArray
               .map((_, idx) => step === idx)
@@ -25,7 +35,7 @@ const AddCandlePage = () => {
         <St.Title>{TITLE[step]}</St.Title>
         <St.Description>{DESCRIPTION[step]}</St.Description>
       </div>
-
+      {childrenArray[step % 5]}
       <St.Button
         type='button'
         onClick={() => {
