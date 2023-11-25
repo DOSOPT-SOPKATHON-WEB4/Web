@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { IcArrow } from '../assets/icons/0_icons';
 
 const settings = {
   dots: true,
@@ -18,6 +19,7 @@ const settings = {
 const AddTagPage = () => {
   return (
     <>
+      <IcArrow />
       <St.AddTag>태그 추가</St.AddTag>
       <St.TagContainer>
         태그를 입력해주세요
@@ -61,9 +63,15 @@ const St = {
     }
   `,
   CarouselBox: styled(Slider)`
-    .carousel-item {
-      width: 50%;
-      height: 50%;
+    width: 100%;
+    height: 100%;
+    .slick-list {
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+    .slick-dots {
+      //슬라이드의 위치
+      bottom: -10px;
     }
   `,
   CarouselContainer: styled.div`
