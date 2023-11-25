@@ -20,7 +20,7 @@ const AddCandlePage = () => {
               )}
           </St.ProgressBar>
         </St.Header>
-        <St.Description>기록하고 싶은 날짜를 입력해 주세요</St.Description>
+        <St.Title>기록하고 싶은 날짜를 입력해 주세요</St.Title>
       </div>
 
       <St.Button
@@ -66,9 +66,14 @@ const St = {
     display: flex;
     gap: 1.4rem;
   `,
-  Description: styled.h1`
+  Title: styled.h1`
     margin: 1.3rem 0 0 0.5rem;
     ${({ theme }) => theme.fonts.s2};
+  `,
+  Description: styled.p`
+    margin: 0%.4 0 0 0.6rem;
+    ${({ theme }) => theme.fonts.b2};
+    color: ${({ theme }) => theme.colors.gray3};
   `,
   Button: styled.button`
     padding: 1.6rem 0rem;
