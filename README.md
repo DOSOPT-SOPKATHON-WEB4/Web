@@ -31,23 +31,21 @@
     <tr align="center">
         <td style="min-width: 150px;">
             <a href="https://github.com/lydiacho">
-              <img src="https://github.com/lydiacho.png" width="100">
+              <img src="https://velog.velcdn.com/images/aroo_ming/post/6ea71c57-26de-4a87-b5ce-8e7089a98372/image.jpg" width="100">
               <br />
               <b>조승희</b>
             </a> 
         </td>
-            </tr>
-    <tr align="center">
         <td style="min-width: 150px;">
             <a href="https://github.com/Arooming">
-              <img src="https://github.com/Arooming.png" width="100">
+              <img src="https://velog.velcdn.com/images/aroo_ming/post/8a18c865-6165-40c1-8cd8-7aedff4e9f77/image.jpg" width="100">
               <br />
               <b>서아름</b>
             </a>
         </td>
         <td style="min-width: 150px;">
             <a href="https://github.com/Jun-min2">
-              <img src="https://github.com/Jun-min2.png" width="100">
+              <img src="https://velog.velcdn.com/images/aroo_ming/post/9a9628e4-fa23-4a29-9b04-bdc9f03d174c/image.jpg" width="100">
               <br />
               <b>최준민</b>
             </a> 
