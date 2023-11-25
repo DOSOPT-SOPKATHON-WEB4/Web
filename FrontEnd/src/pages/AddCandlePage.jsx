@@ -3,7 +3,7 @@ import { IcBack, IcProgressGrey, IcProgressRed } from '../assets';
 import { useState } from 'react';
 import { TITLE, DESCRIPTION } from '../constants/addCandle';
 
-const AddCandlePage = () => {
+const AddCandlePage = ({ children }) => {
   const [step, setStep] = useState(0);
   const progressArray = new Array(5).fill(false);
 
@@ -23,7 +23,7 @@ const AddCandlePage = () => {
         <St.Title>{TITLE[step]}</St.Title>
         <St.Description>{DESCRIPTION[step]}</St.Description>
       </div>
-
+      {children}
       <St.Button
         type='button'
         onClick={() => {
