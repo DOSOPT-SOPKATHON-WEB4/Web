@@ -8,6 +8,7 @@ import AddTitle from '../components/AddCandle/AddTitle';
 import PickCandle from '../components/AddCandle/PickCandle';
 import Complete from '../components/AddCandle/Complete';
 import { useState } from 'react';
+import postCandle from '../api/postCandle';
 
 const AddCandlePage = () => {
   const [step, setStep] = useState(0);
@@ -15,6 +16,14 @@ const AddCandlePage = () => {
   const [cakeTitle, setCakeTitle] = useState('');
   const [feel, setFeel] = useState('');
   const [body, setBody] = useState('');
+
+  const info = {
+    title: title,
+    date: '2023-11-26',
+    cake_title: cakeTitle,
+    feel: feel,
+    body: body,
+  };
 
   const progressArray = new Array(5).fill(false);
   const childrenArray = [
@@ -52,6 +61,7 @@ const AddCandlePage = () => {
         <St.Button
           type='button'
           onClick={() => {
+            postCandle(info);
             setStep((step + 1) % 6);
           }}
         >

@@ -26,7 +26,6 @@ const Complete = ({ title, cakeTitle, feel, body }) => {
     case 'E':
       candle = <IcCandle5Complete key={4} />;
   }
-  console.log(title, cakeTitle, feel, body);
   return (
     <St.Wrapper>
       <IcRound />
