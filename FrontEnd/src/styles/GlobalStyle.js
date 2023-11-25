@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   
   html,
   body {
-    //max-width: 43rem;
+    max-width: 43rem;
 
     font-size: 10px;
   }
