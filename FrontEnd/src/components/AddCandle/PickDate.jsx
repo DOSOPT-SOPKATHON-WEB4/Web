@@ -4,17 +4,17 @@ const PickDate = () => {
   return (
     <St.Wrapper>
       <div>
-        <St.Input type='text' />
+        <St.Input type='number' />
         <St.UnderLine />
       </div>
       <St.Dot />
       <div>
-        <St.Input type='text' />
+        <St.Input type='number' />
         <St.UnderLine />
       </div>
       <St.Dot />
       <div>
-        <St.Input type='text' />
+        <St.Input type='number' />
         <St.UnderLine />
       </div>
     </St.Wrapper>
@@ -33,7 +33,15 @@ const St = {
   Input: styled.input`
     width: 7.3rem;
 
-    border: 0;
+    border: none;
+
+    text-align: center;
+    ${({ theme }) => theme.fonts.s1};
+    color: ${({ theme }) => theme.colors.gray2};
+
+    &:focus {
+      outline: none;
+    }
   `,
   UnderLine: styled.div`
     width: 7.3rem;
