@@ -13,7 +13,7 @@ const Cake = (props) => {
   // 촛불 불러오는 api
   const getCandle = () => {
     axios
-      .get(`https://sopt-web4.o-r.kr/cake/16`, {
+      .get(`${import.meta.env.VITE_BASE_URL}/cake/16`, {
         headers: 'Content-Type: application/json',
       })
       .then((res) => {
