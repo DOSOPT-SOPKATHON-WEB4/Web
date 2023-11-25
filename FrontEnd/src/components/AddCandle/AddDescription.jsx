@@ -7,5 +7,9 @@ const AddDescription = () => {
 export default AddDescription;
 
 const St = {
-  Wrapper: styled.section``,
+  Wrapper: styled.section`
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+  `,
 };
