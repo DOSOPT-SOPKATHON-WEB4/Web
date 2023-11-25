@@ -46,7 +46,8 @@ const St = {
     flex-direction: column;
     justify-content: space-between;
 
-    width: 100vw;
+    width: 100%;
+
     height: 100vh;
     padding: 0 2rem 2.6rem 2rem;
   `,
