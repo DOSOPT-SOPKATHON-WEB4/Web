@@ -12,6 +12,13 @@ import IcCandle2Picked from './icon/ic_candle2_picked.svg?react';
 import IcCandle3Picked from './icon/ic_candle3_picked.svg?react';
 import IcCandle4Picked from './icon/ic_candle4_picked.svg?react';
 import IcCandle5Picked from './icon/ic_candle5_picked.svg?react';
+import IcComplete from './icon/ic_complete.svg?react';
+import IcCandle2Complete from './icon/ic_candle1_complete.svg?react';
+import IcCandle3Complete from './icon/ic_candle2_complete.svg?react';
+import IcCandle4Complete from './icon/ic_candle3_complete.svg?react';
+import IcCandle1Complete from './icon/ic_candle4_complete.svg?react';
+import IcCandle5Complete from './icon/ic_candle5_complete.svg?react';
+import IcRound from './icon/ic_round.svg?react';
 
 export {
   IcBack,
@@ -27,4 +34,11 @@ export {
   IcCandle3Picked,
   IcCandle4Picked,
   IcCandle5Picked,
+  IcComplete,
+  IcCandle1Complete,
+  IcCandle2Complete,
+  IcCandle3Complete,
+  IcCandle4Complete,
+  IcCandle5Complete,
+  IcRound,
 };
