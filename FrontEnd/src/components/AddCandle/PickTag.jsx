@@ -16,7 +16,7 @@ const PickTag = ({ cakeTitle, setCakeTitle }) => {
           onClick={() => {
             setCakeTitle(el.cake_name);
           }}
-          $isSelected={cakeTitle === el}
+          $isSelected={cakeTitle === el.cake_name}
         >
           {el.cake_name}
         </St.Card>
