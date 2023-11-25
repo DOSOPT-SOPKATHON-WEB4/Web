@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
 const PickTag = ({ cakeTitle, setCakeTitle }) => {
-  const TAG = ['시원', 'SOPT', '승희', '다민', '가족', '뽀삐와 산책'];
+  const TAG = ['시원', '데이트', '승희', '다민', '가족', '뽀삐와 산책'];
 
   return (
     <St.Wrapper>
