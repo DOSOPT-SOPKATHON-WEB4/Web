@@ -21,7 +21,8 @@ const St = {
   Header: styled.header`
     display: flex;
     align-items: center;
-    
+    justify-content: center;
+
     position: absolute;
     top: 0;
     left: 0;

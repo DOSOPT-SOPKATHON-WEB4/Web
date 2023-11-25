@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const DUMMY = ['시원', 'SOPT', '승희', '시원', 'SOPT', '승희'];
+const DUMMY = ['시원', 'SOPT', '승희'];
 
 const SelectCategory = (props) => {
   // eslint-disable-next-line react/prop-types
@@ -11,11 +11,13 @@ const SelectCategory = (props) => {
 
   const handleClickedBtn = (e) => {
     setClickedValue(e.target.innerHTML);
+    // setTitle(e.target.innerHTML);
   };
 
   useEffect(() => {
-    setTitle('SOPT');
-  }, []);
+    // setTitle('SOPT');
+    setTitle(clickedValue);
+  }, [clickedValue]);
 
   return (
     <St.BottomContainer>
@@ -41,6 +43,11 @@ const St = {
     position: absolute;
     left: 0;
     bottom: 0;
+
+    /* 가로 스크롤만 가능하게 */
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
 
     margin-left: 1.2rem;
     margin-bottom: 3.1rem;

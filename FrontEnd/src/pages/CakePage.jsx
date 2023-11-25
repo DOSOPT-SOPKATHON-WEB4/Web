@@ -9,7 +9,7 @@ const CakePage = () => {
   return (
     <St.CakePageContainer>
       <Header title={title} />
-      <Cake />
+      <Cake title={title} />
       <SelectCategory setTitle={setTitle} />
     </St.CakePageContainer>
   );
