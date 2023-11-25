@@ -1,11 +1,24 @@
-import styled from 'styled-components';
+import { useState } from 'react';
+import styled, { css } from 'styled-components';
 
 const PickTag = () => {
-  const TAG = ['시원', 'SOPT', '승희'];
+  const TAG = ['시원', 'SOPT', '승희', '다민', '가족', '뽀삐와 산책'];
+  const [selectedTag, setSelectedTag] = useState('');
+
   return (
     <St.Wrapper>
-      <St.PickCard type='button'>시원</St.PickCard>
-      <St.GreyCard type='button'>SOPT</St.GreyCard>
+      {TAG.map((el, idx) => (
+        <St.Card
+          type='button'
+          key={idx}
+          onClick={() => {
+            setSelectedTag(el);
+          }}
+          $isSelected={selectedTag === el}
+        >
+          {el}
+        </St.Card>
+      ))}
     </St.Wrapper>
   );
 };
@@ -13,27 +26,24 @@ const PickTag = () => {
 export default PickTag;
 
 const St = {
-  Wrapper: styled.section``,
-  PickCard: styled.button`
-    width: 8rem;
-    height: 8rem;
+  Wrapper: styled.section`
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
 
-    background-color: ${({ theme }) => theme.colors.red};
-    border: none;
-    border-radius: 1.2rem;
-
-    color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.fonts.s3};
+    flex-wrap: wrap;
   `,
-  GreyCard: styled.button`
+  Card: styled.button`
     width: 8rem;
     height: 8rem;
 
-    background-color: ${({ theme }) => theme.colors.gray5};
     border: none;
     border-radius: 1.2rem;
 
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.s3};
+
+    background-color: ${({ theme, $isSelected }) =>
+      $isSelected ? theme.colors.red : theme.colors.gray5};
   `,
 };
