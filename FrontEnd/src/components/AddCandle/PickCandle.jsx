@@ -1,24 +1,64 @@
 import styled from 'styled-components';
-import { IcCandle1, IcCandle2, IcCandle3, IcCandle4, IcCandle5 } from '../../assets';
+import {
+  IcCandle1,
+  IcCandle1Picked,
+  IcCandle2,
+  IcCandle2Picked,
+  IcCandle3,
+  IcCandle3Picked,
+  IcCandle4,
+  IcCandle4Picked,
+  IcCandle5,
+  IcCandle5Picked,
+} from '../../assets';
 import { useState } from 'react';
 
 const PickCandle = () => {
   const CANDLE = [
-    <IcCandle1 key={1} />,
-    <IcCandle2 key={2} />,
-    <IcCandle3 key={3} />,
-    <IcCandle4 key={4} />,
-    <IcCandle5 key={5} />,
+    {
+      default: <IcCandle1 />,
+      picked: <IcCandle1Picked />,
+    },
+    {
+      default: <IcCandle2 />,
+      picked: <IcCandle2Picked />,
+    },
+    {
+      default: <IcCandle3 />,
+      picked: <IcCandle3Picked />,
+    },
+    {
+      default: <IcCandle4 />,
+      picked: <IcCandle4Picked />,
+    },
+    {
+      default: <IcCandle5 />,
+      picked: <IcCandle5Picked />,
+    },
   ];
 
-  const [selectedCandle, setSelectedCandle] = useState('');
+  const [selectedCandle, setSelectedCandle] = useState(0);
   return (
     <St.Wrapper>
-      <IcCandle1 />
-      <IcCandle2 />
-      <IcCandle3 />
-      <IcCandle4 />
-      <IcCandle5 />
+      {CANDLE.map((candle, idx) =>
+        idx === selectedCandle ? (
+          <St.Candle
+            key={`${idx}`}
+            onClick={() => setSelectedCandle(idx)}
+            $isSelected={idx === selectedCandle}
+          >
+            {candle.picked}
+          </St.Candle>
+        ) : (
+          <St.Candle
+            key={`${idx}picked`}
+            onClick={() => setSelectedCandle(idx)}
+            $isSelected={idx === selectedCandle}
+          >
+            {candle.default}
+          </St.Candle>
+        ),
+      )}
     </St.Wrapper>
   );
 };
@@ -36,4 +76,5 @@ const St = {
       cursor: pointer;
     }
   `,
+  Candle: styled.div``,
 };
