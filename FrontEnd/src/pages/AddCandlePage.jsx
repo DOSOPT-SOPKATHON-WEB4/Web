@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import { IcBack, IcProgressGrey, IcProgressRed } from '../assets';
 import { useState } from 'react';
-//import { TITLE, DESCRIPTION } from '../constants/addCandle';
 import { TITLE, DESCRIPTION } from '../constants/addCandle';
 
 const AddCandlePage = () => {
-  // 스텝에 따라서 IcProgress 조건부 렌더링 시키기
   const [step, setStep] = useState(0);
   const progressArray = new Array(5).fill(false);
 
