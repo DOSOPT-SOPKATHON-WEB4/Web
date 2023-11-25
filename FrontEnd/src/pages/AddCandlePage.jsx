@@ -29,7 +29,7 @@ const AddCandlePage = () => {
       <St.Button
         type='button'
         onClick={() => {
-          setStep(step + 1);
+          setStep((step + 1) % 5);
         }}
       >
         다음
