@@ -1,4 +1,4 @@
-const TITLE = [
+export const TITLE = [
   '기록하고 싶은 날짜를 입력해 주세요',
   '기념하고 싶은 태그를 선택해주세요',
   '촛불의 이름을 지어주세요',
@@ -7,7 +7,7 @@ const TITLE = [
   '케이크에 새로운 초가 등록됐어요!',
 ];
 
-const DESCRIPTION = [
+export const DESCRIPTION = [
   '',
   '원하는 태그가 없다면 6개까지 생성할 수 있어요',
   '해당 기념일을 요약하는 제목을 작성해주세요',
@@ -15,5 +15,3 @@ const DESCRIPTION = [
   '조금 더 자세하게 기록하여 새로운 촛불을 완성해보세요',
   '짜잔- 나만의 새로운 기념일이 만들어졌어요',
 ];
-
-export default { TITLE, DESCRIPTION };

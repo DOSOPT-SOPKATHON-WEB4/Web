@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { IcBack, IcProgressGrey, IcProgressRed } from '../assets';
 import { useState } from 'react';
+//import { TITLE, DESCRIPTION } from '../constants/addCandle';
+import { TITLE, DESCRIPTION } from '../constants/addCandle';
 
 const AddCandlePage = () => {
   // 스텝에 따라서 IcProgress 조건부 렌더링 시키기
@@ -20,7 +22,8 @@ const AddCandlePage = () => {
               )}
           </St.ProgressBar>
         </St.Header>
-        <St.Title>기록하고 싶은 날짜를 입력해 주세요</St.Title>
+        <St.Title>{TITLE[step]}</St.Title>
+        <St.Description>{DESCRIPTION[step]}</St.Description>
       </div>
 
       <St.Button
@@ -71,7 +74,7 @@ const St = {
     ${({ theme }) => theme.fonts.s2};
   `,
   Description: styled.p`
-    margin: 0%.4 0 0 0.6rem;
+    margin: 0.4rem 0 0 0.6rem;
     ${({ theme }) => theme.fonts.b2};
     color: ${({ theme }) => theme.colors.gray3};
   `,
