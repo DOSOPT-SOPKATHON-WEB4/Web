@@ -3,19 +3,38 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { IcBack } from '../assets';
-
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidersToShow: 2,
-  // slidersToScroll: 1,
-  // centerMode: true,
-  // centerPadding: '0px',
-  // draggable: true,
-};
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AddTagPage = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [slideTitle, setSlideTitle] = useState('');
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    beforeChange: (current, next) => {
+      return setSlideIndex(current);
+    },
+  };
+  const navigate = useNavigate();
+
+  console.log(slideIndex);
+  const handleAddTag = async () => {
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/cake`, {
+        title: slideTitle,
+        theme: slideIndex === 0 ? 'BLUE' : slideIndex === 1 ? 'RED' : 'GREEN',
+      });
+      response && navigate('/add-cake');
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       <St.AddTag>
@@ -25,7 +44,13 @@ const AddTagPage = () => {
         <St.AddTagContainer>케이크 추가하기</St.AddTagContainer>
         <St.AddTagWrapper>케이크 이름을 입력해주세요</St.AddTagWrapper>
         <St.AddTagLayout>
-          <St.TagContainerInput placeholder='뽀삐케이크' />
+          <St.TagContainerInput
+            value={slideTitle}
+            onChange={(e) => {
+              setSlideTitle(e.target.value);
+            }}
+            placeholder='뽀삐케이크'
+          />
           <St.AddTagBox></St.AddTagBox>
         </St.AddTagLayout>
         <St.SelectTheme>케이크 테마를 선택해주세요</St.SelectTheme>
@@ -42,7 +67,9 @@ const AddTagPage = () => {
           </div>
         </St.CarouselBox>
 
-        <St.Button type='button'>다음</St.Button>
+        <St.Button type='button' onClick={handleAddTag}>
+          다음
+        </St.Button>
       </St.AddTag>
     </>
   );
@@ -52,6 +79,7 @@ export default AddTagPage;
 
 const St = {
   AddTag: styled.main``,
+
   BackBox: styled.div`
     margin-top: 1.3rem;
     margin-left: 1.2rem;
