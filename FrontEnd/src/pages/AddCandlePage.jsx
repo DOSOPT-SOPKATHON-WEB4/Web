@@ -2,10 +2,22 @@ import styled from 'styled-components';
 import { IcBack, IcProgressGrey, IcProgressRed } from '../assets';
 import { useState } from 'react';
 import { TITLE, DESCRIPTION } from '../constants/addCandle';
+import AddDescription from '../components/AddCandle/AddDescription';
+import PickDate from '../components/AddCandle/PickDate';
+import PickTag from '../components/AddCandle/PickTag';
+import AddTitle from '../components/AddCandle/AddTitle';
+import PickCandle from '../components/AddCandle/PickCandle';
 
-const AddCandlePage = ({ children }) => {
+const AddCandlePage = () => {
   const [step, setStep] = useState(0);
   const progressArray = new Array(5).fill(false);
+  const childrenArray = [
+    <PickDate key={0} />,
+    <PickTag key={1} />,
+    <AddTitle key={2} />,
+    <PickCandle key={3} />,
+    <AddDescription key={4} />,
+  ];
 
   return (
     <St.Wrapper>
@@ -23,7 +35,7 @@ const AddCandlePage = ({ children }) => {
         <St.Title>{TITLE[step]}</St.Title>
         <St.Description>{DESCRIPTION[step]}</St.Description>
       </div>
-      {children}
+      {childrenArray[step % 5]}
       <St.Button
         type='button'
         onClick={() => {
