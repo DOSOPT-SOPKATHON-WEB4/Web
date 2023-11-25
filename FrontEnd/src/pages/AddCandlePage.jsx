@@ -7,6 +7,7 @@ import PickDate from '../components/AddCandle/PickDate';
 import PickTag from '../components/AddCandle/PickTag';
 import AddTitle from '../components/AddCandle/AddTitle';
 import PickCandle from '../components/AddCandle/PickCandle';
+import Complete from '../components/AddCandle/Complete';
 
 const AddCandlePage = () => {
   const [step, setStep] = useState(0);
@@ -24,25 +25,27 @@ const AddCandlePage = () => {
       <div>
         <St.Header>
           <IcBack onClick={() => setStep(step - 1)} />
-          <St.ProgressBar>
-            {progressArray
-              .map((_, idx) => step === idx)
-              .map((val, idx) =>
-                val ? <IcProgressRed key={idx} /> : <IcProgressGrey key={idx} />,
-              )}
-          </St.ProgressBar>
+          {step !== 6 && (
+            <St.ProgressBar>
+              {progressArray
+                .map((_, idx) => step === idx)
+                .map((val, idx) =>
+                  val ? <IcProgressRed key={idx} /> : <IcProgressGrey key={idx} />,
+                )}
+            </St.ProgressBar>
+          )}
         </St.Header>
         <St.Title>{TITLE[step]}</St.Title>
         <St.Description>{DESCRIPTION[step]}</St.Description>
       </div>
-      {childrenArray[step % 5]}
+      {step === 5 ? <Complete /> : childrenArray[step % 5]}
       <St.Button
         type='button'
         onClick={() => {
-          setStep((step + 1) % 5);
+          setStep((step + 1) % 6);
         }}
       >
-        다음
+        {step === 5 ? '케이크 보러가기' : '다음'}
       </St.Button>
     </St.Wrapper>
   );
