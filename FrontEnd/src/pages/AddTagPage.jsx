@@ -49,7 +49,7 @@ const AddTagPage = () => {
             onChange={(e) => {
               setSlideTitle(e.target.value);
             }}
-            placeholder='뽀삐케이크'
+            placeholder='입력해주세요'
           />
           <St.AddTagBox></St.AddTagBox>
         </St.AddTagLayout>
