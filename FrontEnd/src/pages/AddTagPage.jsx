@@ -103,11 +103,11 @@ const St = {
       margin: 0 auto;
     }
     .slick-dots {
-      //슬라이드의 위치
-      bottom: -10px;
+      bottom: -1.6rem;
     }
   `,
   CarouselImg: styled.img`
+    margin-top: 1.5rem;
     margin-left: 7.3rem;
     width: 22.9rem;
     height: 20rem;
@@ -122,7 +122,10 @@ const St = {
     height: 5.6rem;
     text-align: center;
     border: none;
+    color: ${({ theme }) => theme.colors.red};
+    ${({ theme }) => theme.fonts.s3};
     background-color: ${({ theme }) => theme.colors.white};
     border-radius: 10rem;
+    ${({ theme }) => theme.shadow.shadow};
   `,
 };
