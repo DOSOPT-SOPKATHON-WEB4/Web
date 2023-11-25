@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import Header from '../components/Cake/Header';
 import Cake from '../components/Cake/Cake';
 import SelectCategory from '../components/Cake/SelectCategory';
+import { useState } from 'react';
 
 const CakePage = () => {
+  const [title, setTitle] = useState('');
   return (
     <St.CakePageContainer>
-      <Header />
+      <Header title={title} />
       <Cake />
-      <SelectCategory />
+      <SelectCategory setTitle={setTitle} />
     </St.CakePageContainer>
   );
 };

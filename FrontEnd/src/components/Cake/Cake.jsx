@@ -4,32 +4,19 @@ import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 const Cake = () => {
-  //   let randomNum = Math.floor(Math.random() * 8 + 1);
-  //   let randomNum = 1;
-  //   const pickedCandle = CANDLE_POSITION.filter((it) => it.key === randomNum);
   const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 0, 0]);
 
-  //   const temp = [...checkedCandlePosition];
-  //   temp[randomNum - 1] = true;
-  //   setCheckedCandlePosition(temp);
+  // 촛불 불러오는 api
 
   useEffect(() => {
     let randomNum = Math.floor(Math.random() * 8 + 1);
     while (checkedCandlePosition[randomNum - 1] === 1) {
-      //   }
-      //   randomNum = Math.floor(Math.random() * 8 + 1);
-      console.log('fasfsdf');
-
-      //   if (checkedCandlePosition[randomNum - 1]) {
-      //     randomNum = Math.floor(Math.random() * 8 + 1);
+      randomNum = Math.floor(Math.random() * 8 + 1);
     }
-    //  else {
+
     const temp = [...checkedCandlePosition];
     temp[randomNum - 1] = 1;
     setCheckedCandlePosition(temp);
-
-    console.log(randomNum, checkedCandlePosition);
-    // }
   }, []);
 
   return (
