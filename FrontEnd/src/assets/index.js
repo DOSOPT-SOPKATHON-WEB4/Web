@@ -19,6 +19,7 @@ import IcCandle4Complete from './icon/ic_candle3_complete.svg?react';
 import IcCandle1Complete from './icon/ic_candle4_complete.svg?react';
 import IcCandle5Complete from './icon/ic_candle5_complete.svg?react';
 import IcRound from './icon/ic_round.svg?react';
+import IcMainLogo from './icon/ic_main_logo.svg?react';
 
 export {
   IcBack,
@@ -41,4 +42,5 @@ export {
   IcCandle4Complete,
   IcCandle5Complete,
   IcRound,
+  IcMainLogo,
 };
