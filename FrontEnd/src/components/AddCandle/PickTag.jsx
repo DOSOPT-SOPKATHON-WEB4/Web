@@ -1,20 +1,24 @@
 import styled from 'styled-components';
+import getCake from '../../api/getCake';
+import { useEffect, useState } from 'react';
 
 const PickTag = ({ cakeTitle, setCakeTitle }) => {
-  const TAG = ['시원', '데이트', '승희', '다민', '가족', '뽀삐와 산책'];
-
+  const [tag, setTag] = useState([]);
+  useEffect(() => {
+    getCake(setTag);
+  }, []);
   return (
     <St.Wrapper>
-      {TAG.map((el, idx) => (
+      {tag.slice(0, 5).map((el, idx) => (
         <St.Card
           type='button'
           key={idx}
           onClick={() => {
-            setCakeTitle(el);
+            setCakeTitle(el.cake_name);
           }}
           $isSelected={cakeTitle === el}
         >
-          {el}
+          {el.cake_name}
         </St.Card>
       ))}
     </St.Wrapper>
