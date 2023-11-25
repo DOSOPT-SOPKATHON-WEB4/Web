@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import { IcBack } from '../assets';
 
 const AddCandlePage = () => {
-  return <div>AddCandlePage</div>;
+  return (
+    <div>
+      <IcBack />
+    </div>
+  );
 };
 
 export default AddCandlePage;
