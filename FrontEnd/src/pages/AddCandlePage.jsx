@@ -19,7 +19,7 @@ const AddCandlePage = () => {
 
   const info = {
     title: title,
-    date: '2023-11-26',
+    date: '2023-12-18',
     cake_title: cakeTitle,
     feel: feel,
     body: body,
