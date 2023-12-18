@@ -1,10 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CakeFloor, CandleOn3, Logo } from '../assets';
+import { useNavigate } from 'react-router-dom';
 
 const OnboardingPage = () => {
+  const navigate = useNavigate();
+
+  const handleStart = () => {
+    navigate('/main');
+  };
+
   return (
-    <St.MainContainer>
+    <St.MainContainer onClick={handleStart}>
       <St.LogoContainer>
         <Logo />
       </St.LogoContainer>
@@ -28,6 +35,8 @@ const St = {
     height: 100dvh;
 
     background-color: ${({ theme }) => theme.colors.red};
+
+    cursor: pointer;
   `,
 
   LogoContainer: styled.div`
