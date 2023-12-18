@@ -11,6 +11,7 @@ import IcCandle2 from './icon/ic_candle2.svg?react';
 import IcCandle3 from './icon/ic_candle3.svg?react';
 import IcCandle4 from './icon/ic_candle4.svg?react';
 import IcCandle5 from './icon/ic_candle5.svg?react';
+import IcCandleFire from './icon/ic_candle_fire.svg?react';
 import IcCandle1Picked from './icon/ic_candle1_picked.svg?react';
 import IcCandle2Picked from './icon/ic_candle2_picked.svg?react';
 import IcCandle3Picked from './icon/ic_candle3_picked.svg?react';
@@ -34,6 +35,7 @@ export {
   IcCandle3,
   IcCandle4,
   IcCandle5,
+  IcCandleFire,
   IcCandle1Picked,
   IcCandle2Picked,
   IcCandle3Picked,
