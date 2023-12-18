@@ -1,45 +1,28 @@
 import styled from 'styled-components';
-import {
-  IcCandle1,
-  IcCandle1Picked,
-  IcCandle2,
-  IcCandle2Picked,
-  IcCandle3,
-  IcCandle3Picked,
-  IcCandle4,
-  IcCandle4Picked,
-  IcCandle5,
-  IcCandle5Picked,
-  IcCandleFire,
-} from '../../assets';
+import { IcCandle1, IcCandle2, IcCandle3, IcCandle4, IcCandle5, IcCandleFire } from '../../assets';
 import { useState } from 'react';
 
 const PickCandle = ({ setFeel }) => {
   const CANDLE = [
     {
       feel: 'A',
-      default: <IcCandle1 />,
-      picked: <IcCandle1Picked />,
+      icon: <IcCandle1 />,
     },
     {
       feel: 'B',
-      default: <IcCandle2 />,
-      picked: <IcCandle2Picked />,
+      icon: <IcCandle2 />,
     },
     {
       feel: 'C',
-      default: <IcCandle3 />,
-      picked: <IcCandle3Picked />,
+      icon: <IcCandle3 />,
     },
     {
       feel: 'D',
-      default: <IcCandle4 />,
-      picked: <IcCandle4Picked />,
+      icon: <IcCandle4 />,
     },
     {
       feel: 'E',
-      default: <IcCandle5 />,
-      picked: <IcCandle5Picked />,
+      icon: <IcCandle5 />,
     },
   ];
 
@@ -55,7 +38,7 @@ const PickCandle = ({ setFeel }) => {
           }}
         >
           <St.CandleFire>{idx === selectedCandle && <IcCandleFire />}</St.CandleFire>
-          <div>{candle.default}</div>
+          <div>{candle.icon}</div>
         </St.CandleChoice>
       ))}
     </St.Wrapper>
