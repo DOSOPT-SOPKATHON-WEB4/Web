@@ -11,7 +11,9 @@ const MainPage = () => {
         <St.Button1 type='button' onClick={() => navigate('/add-candle')}>
           새로운 촛불 켜기
         </St.Button1>
-        <St.Button2 type='button'>케이크 보러 가기</St.Button2>
+        <St.Button2 type='button' onClick={() => navigate('/cake')}>
+          케이크 보러 가기
+        </St.Button2>
       </St.ButtonContainer>
     </St.Wrapper>
   );
