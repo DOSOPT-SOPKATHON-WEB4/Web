@@ -39,6 +39,8 @@ const St = {
     ${({ theme }) => theme.fonts.s1};
     color: ${({ theme }) => theme.colors.gray2};
 
+    appearance: none;
+
     &:focus {
       outline: none;
     }
