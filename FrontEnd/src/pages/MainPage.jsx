@@ -47,6 +47,8 @@ const St = {
 
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.s3};
+
+    cursor: pointer;
   `,
   Button2: styled.button`
     padding: 1.6rem 0rem;
@@ -58,5 +60,7 @@ const St = {
 
     color: ${({ theme }) => theme.colors.red};
     ${({ theme }) => theme.fonts.s3};
+
+    cursor: pointer;
   `,
 };
