@@ -2,30 +2,18 @@ import React from 'react';
 import { CANDLE_POSITION } from '../../constants/constant';
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import axios from 'axios';
+import getCandle from '../../api/getCandle';
 
 const Cake = (props) => {
   const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
   const [, setIsBurned] = useState(false);
+  const [, setCandle] = useState([]);
   // eslint-disable-next-line react/prop-types
-  const { title, setTitle } = props;
-
-  // 촛불 불러오는 api
-  const getCandle = () => {
-    axios
-      .get(`${import.meta.env.VITE_BASE_URL}/cake/16`, {
-        headers: 'Content-Type: application/json',
-      })
-      .then((res) => {
-        setTitle(res.data.data.cake_title);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const { title, cakeId } = props;
 
   useEffect(() => {
-    getCandle();
+    getCandle(cakeId, setCandle);
+
     let randomNum = Math.floor(Math.random() * 8 + 1);
     while (
       checkedCandlePosition[randomNum - 1] === 1 ||
