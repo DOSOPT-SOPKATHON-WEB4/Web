@@ -35,17 +35,18 @@ const SelectCategory = (props) => {
 const St = {
   BottomContainer: styled.div`
     display: flex;
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    justify-content: left;
+    align-items: end;
+
+    height: 4rem;
 
     /* 가로 스크롤만 가능하게 */
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
 
-    margin-left: 1.2rem;
-    margin-bottom: 3.1rem;
+    margin-top: 4.6rem;
+    margin-left: 15.2rem;
 
     gap: 0.8rem;
   `,
@@ -63,12 +64,12 @@ const St = {
     width: 8rem;
     height: 4rem;
     border-radius: 10rem;
-    border: 1px solid var(--sub-g-5, #d7d7d7);
-    ${({ theme }) => theme.fonts.s3};
+    border: 1px solid var(--sub-g5, #d7d7d7);
 
+    ${({ theme }) => theme.fonts.s3};
     color: ${({ $isClicked, theme }) => ($isClicked ? theme.colors.white : theme.colors.gray2)};
     background-color: ${({ $isClicked, theme }) =>
-      $isClicked ? theme.colors.red : theme.colors.white};
+      $isClicked ? theme.colors.red : theme.colors.white_80};
   `,
 };
 
