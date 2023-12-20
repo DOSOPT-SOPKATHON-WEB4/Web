@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const Date = () => {
@@ -7,13 +8,13 @@ const Date = () => {
   return (
     <St.Wrapper>
       {dates.map((dateText, idx) => (
-        <>
-          <div key={idx}>
+        <React.Fragment key={idx}>
+          <div>
             <St.Text>{dateText}</St.Text>
             <St.UnderLine />
           </div>
           {idx !== dateText.length && <St.Dot />}
-        </>
+        </React.Fragment>
       ))}
     </St.Wrapper>
   );
