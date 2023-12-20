@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IcFace, IcFaceA, IcFaceB, IcFaceC, IcFaceD, IcFaceE } from '../../assets';
+import { IcFaceA, IcFaceB, IcFaceC, IcFaceD, IcFaceE } from '../../assets';
 
 const Text = ({ tag, title, feel }) => {
   const FEEL = {

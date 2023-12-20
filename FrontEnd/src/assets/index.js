@@ -20,7 +20,6 @@ import IcCandle1Complete from './icon/ic_candle4_complete.svg?react';
 import IcCandle5Complete from './icon/ic_candle5_complete.svg?react';
 import IcRound from './icon/ic_round.svg?react';
 import IcMainLogo from './icon/ic_main_logo.svg?react';
-import IcFace from './icon/ic_face.svg?react';
 
 import IcFaceA from './icon/ic_face_a.svg?react';
 import IcFaceB from './icon/ic_face_b.svg?react';
@@ -49,7 +48,6 @@ export {
   Logo,
   CakeFloor,
   CandleOn3,
-  IcFace,
   IcFaceA,
   IcFaceB,
   IcFaceC,
