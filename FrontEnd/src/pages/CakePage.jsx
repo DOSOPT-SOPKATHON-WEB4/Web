@@ -5,12 +5,14 @@ import SelectCategory from '../components/Cake/SelectCategory';
 import { useState } from 'react';
 
 const CakePage = () => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('SOPT');
+  const [cakeId, setCakeId] = useState(16);
+
   return (
     <St.CakePageContainer>
       <Header title={title} />
-      <Cake title={title} setTitle={setTitle} />
-      <SelectCategory title={title} />
+      <Cake title={title} cakeId={cakeId}/>
+      <SelectCategory title={title} setTitle={setTitle} setCakeId={setCakeId}/>
     </St.CakePageContainer>
   );
 };
