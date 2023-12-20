@@ -15,6 +15,7 @@ const colors = {
   beige: '#F5E7A1',
   black: '#191919',
   white: '#FFFFFF',
+  white_80: 'rgba(242, 233, 233, 0.80)',
   gray1: '#3A3A3A',
   gray2: '#555555',
   gray3: '#6F6F6F',
