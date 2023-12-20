@@ -52,7 +52,7 @@ const Cake = (props) => {
           return (
             <St.Candle
               key={idx}
-              src='../public/candle_on_1.png'
+              src='/candle_on_1.png'
               $left={CANDLE_POSITION[idx].left}
               $bottom={CANDLE_POSITION[idx].bottom}
             />
@@ -61,13 +61,13 @@ const Cake = (props) => {
           return (
             <St.Candle
               key={idx}
-              src='../public/candle_off_2.png'
+              src='/candle_off_2.png'
               $left={CANDLE_POSITION[idx].left}
               $bottom={CANDLE_POSITION[idx].bottom}
             />
           );
       })}
-      <St.Cake src='../public/cake_view9.png' />;
+      <St.Cake src='/cake_view9.png' />
       {/* <St.Toast>사라져가는 촛불이 있어요, 촛불을 눌러서 다시 살려주세요!</St.Toast> */}
     </St.Container>
   );
@@ -79,7 +79,7 @@ const St = {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 10rem;
+    margin-top: 24.3rem;
 
     position: relative;
     width: 32rem;
