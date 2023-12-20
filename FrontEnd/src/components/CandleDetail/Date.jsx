@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Date = () => {
-  const DATE = '2023-09-20';
-  const dates = DATE.split('-');
+const Date = ({ date }) => {
+  const dates = date.split('-');
 
   return (
     <St.Wrapper>

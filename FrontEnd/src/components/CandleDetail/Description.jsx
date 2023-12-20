@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const Description = () => {
-  return <St.Wrapper>Description</St.Wrapper>;
+const Description = ({ body }) => {
+  return <St.Wrapper>{body}</St.Wrapper>;
 };
 
 export default Description;

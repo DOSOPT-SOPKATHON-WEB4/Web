@@ -1,19 +1,23 @@
 import styled from 'styled-components';
-import { IcFace } from '../../assets';
+import { IcFace, IcFaceA, IcFaceB, IcFaceC, IcFaceD, IcFaceE } from '../../assets';
 
-const Text = () => {
-  const TAG = '군대';
-  const TITLE = '1번캔들';
-
+const Text = ({ tag, title, feel }) => {
+  const FEEL = {
+    A: <IcFaceA />,
+    B: <IcFaceB />,
+    C: <IcFaceC />,
+    D: <IcFaceD />,
+    E: <IcFaceE />,
+  };
   return (
     <St.Wrapper>
       <p>
-        <span>{TAG}</span> 를 기념한 케이크에요
+        <span>{tag}</span> 를 기념한 케이크에요
       </p>
       <p>
-        <span>{TITLE}</span> 촛불
+        <span>{title}</span> 촛불
       </p>
-      <IcFace />
+      {FEEL[feel]}
     </St.Wrapper>
   );
 };
@@ -36,6 +40,11 @@ const St = {
 
     & span {
       color: ${({ theme }) => theme.colors.red};
+    }
+
+    & > svg {
+      height: 4.8rem;
+      width: 4.8rem;
     }
   `,
 };

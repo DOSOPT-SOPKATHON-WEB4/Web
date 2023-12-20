@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Date from '../components/CandleDetail/Date';
 import styled from 'styled-components';
 import Text from '../components/CandleDetail/Text';
 import Description from '../components/CandleDetail/Description';
 import LastUpdate from '../components/CandleDetail/LastUpdate';
 import Buttons from '../components/CandleDetail/Buttons';
+import useGetCandle from '../api/getCandle';
 
 const CandleDetailPage = () => {
+  const [data, setData] = useState();
   const candleId = 1;
   const cakeName = '승희';
 
+  useGetCandle(candleId, cakeName, setData);
+
   return (
-    <St.Wrapper>
-      <Date />
-      <Text />
-      <div>
-        <Description />
-        <LastUpdate />
-      </div>
-      <Buttons />
-    </St.Wrapper>
+    data && (
+      <St.Wrapper>
+        <Date date={data.date} />
+        <Text tag={data.tag} title={data.title} feel={data.feel} />
+        <div>
+          <Description body={data.body} />
+          <LastUpdate last={data.last_fire} />
+        </div>
+        <Buttons />
+      </St.Wrapper>
+    )
   );
 };
 
