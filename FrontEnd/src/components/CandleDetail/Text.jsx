@@ -21,7 +21,7 @@ const Text = () => {
 export default Text;
 
 const St = {
-  Wrapper: styled.div`
+  Wrapper: styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;

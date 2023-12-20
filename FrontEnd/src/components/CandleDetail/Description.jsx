@@ -9,7 +9,7 @@ export default Description;
 const St = {
   Wrapper: styled.section`
     width: 100%;
-    height: 20.6rem;
+    height: 100%;
 
     background-color: ${({ theme }) => theme.colors.gray6};
     border-radius: 2rem;

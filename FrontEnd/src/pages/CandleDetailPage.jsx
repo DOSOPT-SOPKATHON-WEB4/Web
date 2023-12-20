@@ -31,6 +31,7 @@ const St = {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 2.5rem;
 
     width: 100vw;
     height: 100vh;
