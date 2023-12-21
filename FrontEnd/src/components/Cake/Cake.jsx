@@ -3,8 +3,10 @@ import { CANDLE_POSITION } from '../../constants/constant';
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Cake = (props) => {
+  const navigate = useNavigate();
   const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
   const [, setIsBurned] = useState(false);
   // eslint-disable-next-line react/prop-types
@@ -55,6 +57,9 @@ const Cake = (props) => {
               src='../public/candle_on_1.png'
               $left={CANDLE_POSITION[idx].left}
               $bottom={CANDLE_POSITION[idx].bottom}
+              onClick={() => {
+                navigate(`/candle-detail?candleId=${idx}&cakeName=${title}`);
+              }}
             />
           );
         if (it === 0.5)

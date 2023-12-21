@@ -1,18 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CakeFloor, CandleOn3, Logo } from '../../assets';
+import { CakeFloor, CandleOn3, Logo } from '../assets';
+import { useNavigate } from 'react-router-dom';
 
-const Main1 = () => {
+const OnboardingPage = () => {
+  const navigate = useNavigate();
+
+  const handleStart = () => {
+    navigate('/main');
+  };
+
   return (
-    <St.MainContainer>
-      <St.LogoContianer>
+    <St.MainContainer onClick={handleStart}>
+      <St.LogoContainer>
         <Logo />
-      </St.LogoContianer>
+      </St.LogoContainer>
       <St.IconContainer>
         <St.CandleContainer>
           <CandleOn3 />
         </St.CandleContainer>
-
         <CakeFloor />
       </St.IconContainer>
     </St.MainContainer>
@@ -29,9 +35,11 @@ const St = {
     height: 100dvh;
 
     background-color: ${({ theme }) => theme.colors.red};
+
+    cursor: pointer;
   `,
 
-  LogoContianer: styled.div`
+  LogoContainer: styled.div`
     margin-top: 5.4rem;
   `,
 
@@ -47,4 +55,4 @@ const St = {
   `,
 };
 
-export default Main1;
+export default OnboardingPage;

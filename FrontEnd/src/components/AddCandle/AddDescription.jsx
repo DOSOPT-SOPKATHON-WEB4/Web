@@ -41,5 +41,6 @@ const St = {
     }
 
     resize: none;
+    outline: none;
   `,
 };

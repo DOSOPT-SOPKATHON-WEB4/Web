@@ -1,27 +1,25 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const PickDate = () => {
+const Date = ({ date }) => {
+  const dates = date.split('-');
+
   return (
     <St.Wrapper>
-      <div>
-        <St.Input type='number' />
-        <St.UnderLine />
-      </div>
-      <St.Dot />
-      <div>
-        <St.Input type='number' />
-        <St.UnderLine />
-      </div>
-      <St.Dot />
-      <div>
-        <St.Input type='number' />
-        <St.UnderLine />
-      </div>
+      {dates.map((dateText, idx) => (
+        <React.Fragment key={idx}>
+          <div>
+            <St.Text>{dateText}</St.Text>
+            <St.UnderLine />
+          </div>
+          {idx !== dateText.length && <St.Dot />}
+        </React.Fragment>
+      ))}
     </St.Wrapper>
   );
 };
 
-export default PickDate;
+export default Date;
 
 const St = {
   Wrapper: styled.section`
@@ -30,20 +28,13 @@ const St = {
     align-items: flex-end;
     gap: 1rem;
   `,
-  Input: styled.input`
-    width: 7.3rem;
-
-    border: none;
+  Text: styled.p`
+    width: 100%;
+    margin: 0.5rem 0rem;
 
     text-align: center;
     ${({ theme }) => theme.fonts.s1};
     color: ${({ theme }) => theme.colors.gray2};
-
-    appearance: none;
-
-    &:focus {
-      outline: none;
-    }
   `,
   UnderLine: styled.div`
     width: 7.3rem;
