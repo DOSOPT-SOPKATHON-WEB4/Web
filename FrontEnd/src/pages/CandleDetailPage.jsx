@@ -6,11 +6,13 @@ import Description from '../components/CandleDetail/Description';
 import LastUpdate from '../components/CandleDetail/LastUpdate';
 import Buttons from '../components/CandleDetail/Buttons';
 import useGetCandle from '../api/getCandle';
+import { useSearchParams } from 'react-router-dom';
 
 const CandleDetailPage = () => {
+  const [searchParams] = useSearchParams();
   const [data, setData] = useState();
-  const candleId = 1;
-  const cakeName = '승희';
+  const candleId = 1; // 추후 수정
+  const cakeName = searchParams.get('cakeName');
 
   useGetCandle(candleId, cakeName, setData);
 
