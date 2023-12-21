@@ -11,11 +11,7 @@ import IcCandle2 from './icon/ic_candle2.svg?react';
 import IcCandle3 from './icon/ic_candle3.svg?react';
 import IcCandle4 from './icon/ic_candle4.svg?react';
 import IcCandle5 from './icon/ic_candle5.svg?react';
-import IcCandle1Picked from './icon/ic_candle1_picked.svg?react';
-import IcCandle2Picked from './icon/ic_candle2_picked.svg?react';
-import IcCandle3Picked from './icon/ic_candle3_picked.svg?react';
-import IcCandle4Picked from './icon/ic_candle4_picked.svg?react';
-import IcCandle5Picked from './icon/ic_candle5_picked.svg?react';
+import IcCandleFire from './icon/ic_candle_fire.svg?react';
 import IcComplete from './icon/ic_complete.svg?react';
 import IcCandle2Complete from './icon/ic_candle1_complete.svg?react';
 import IcCandle3Complete from './icon/ic_candle2_complete.svg?react';
@@ -24,6 +20,12 @@ import IcCandle1Complete from './icon/ic_candle4_complete.svg?react';
 import IcCandle5Complete from './icon/ic_candle5_complete.svg?react';
 import IcRound from './icon/ic_round.svg?react';
 import IcMainLogo from './icon/ic_main_logo.svg?react';
+
+import IcFaceA from './icon/ic_face_a.svg?react';
+import IcFaceB from './icon/ic_face_b.svg?react';
+import IcFaceC from './icon/ic_face_c.svg?react';
+import IcFaceD from './icon/ic_face_d.svg?react';
+import IcFaceE from './icon/ic_face_e.svg?react';
 
 export {
   IcBack,
@@ -34,11 +36,7 @@ export {
   IcCandle3,
   IcCandle4,
   IcCandle5,
-  IcCandle1Picked,
-  IcCandle2Picked,
-  IcCandle3Picked,
-  IcCandle4Picked,
-  IcCandle5Picked,
+  IcCandleFire,
   IcComplete,
   IcCandle1Complete,
   IcCandle2Complete,
@@ -50,4 +48,9 @@ export {
   Logo,
   CakeFloor,
   CandleOn3,
+  IcFaceA,
+  IcFaceB,
+  IcFaceC,
+  IcFaceD,
+  IcFaceE,
 };
