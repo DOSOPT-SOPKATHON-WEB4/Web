@@ -16,7 +16,7 @@ const AddTagPage = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    beforeChange: (current, next) => {
+    beforeChange: (current) => {
       return setSlideIndex(current);
     },
   };
@@ -117,8 +117,6 @@ const St = {
     text-align: center;
     color: ${({ theme }) => theme.colors.gray3};
     border: none;
-    &::placeholder= {
-    }
   `,
   SelectTheme: styled.p`
     ${({ theme }) => theme.fonts.s2};

@@ -3,10 +3,6 @@ import { IcMainLogo } from '../assets';
 import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
-  return (
-    <>
-      <div>MainPage</div>
-    </>
   const navigate = useNavigate();
   return (
     <St.Wrapper>
