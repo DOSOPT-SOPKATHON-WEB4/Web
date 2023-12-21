@@ -8,7 +8,6 @@ const useGetCandle = (candleId, cakeName, setData) => {
         `${import.meta.env.VITE_BASE_URL}/candle?candleId=${candleId}&cakeName=${cakeName}`,
       );
       setData(response.data.data);
-      console.log(response.data.data);
     } catch (err) {
       console.log(err);
     }
