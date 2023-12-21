@@ -6,7 +6,6 @@ import Logo from './icon/logo.svg?react';
 import CakeFloor from './icon/cake_floor2_1.svg?react';
 import CandleOn3 from './icon/candle_on_3.svg?react';
 
-
 import IcCandle1 from './icon/ic_candle1.svg?react';
 import IcCandle2 from './icon/ic_candle2.svg?react';
 import IcCandle3 from './icon/ic_candle3.svg?react';
@@ -48,6 +47,7 @@ export {
   IcCandle5Complete,
   IcRound,
   IcMainLogo,
-  IcBack, IcProgressGrey, IcProgressRed, Logo, CakeFloor, CandleOn3
+  Logo,
+  CakeFloor,
+  CandleOn3,
 };
-

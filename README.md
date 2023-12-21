@@ -1,25 +1,39 @@
 <div align="center">
 
-<h2> (서비스이름) </h2>
+<h2> CandleLight (캔들라이트) </h2>
 
-서비스 소개
+‘남’이 아닌 ‘나’가 주체가 되어 ‘나’에게 중요한 나날들을 온전하게 기념할 수 있는 서비스. 나만의 기념일을 촛불로 표현하여, 카테고리 별 ‘케이크’에 ‘촛불’을 켜나갑니다.
 
 <br/>
 
-<img src=""  alt="서비스대표-이미지" />
-<div>(서비스 소개)</div>
 
 </div>
 
-<h2> ✨ (서비스) 주요 기능 </h2>
+<h2> ✨ CandleLight 주요 기능 </h2>
 
-<h3> 1️⃣ (기능) </h3>
-<img src=""  alt="기능1-대표이미지" />
-<div ><strong> (강조단어) </strong> (기능설명)  <br/></div>
+<h3> 1️⃣ 촛불 생성(기념일 생성 및 기록) </h3>
+<!-- <img src=""  alt="기능1-대표이미지" /> -->
+<div >유저에게 소중한 기념일을 생성하고, 그날의 제목/카테고리/기분/설명을 입력한다.
 
-<h3> 2️⃣ (기능) </h3>
-<img src=""  alt="기능1-대표이미지" />
-<div ><strong> (강조단어) </strong> (기능설명)  <br/></div>
+입력을 완료하면 해당 카테고리 테마에 있는 케이크에 촛불이 생성된다.  <br/></div>
+
+<img width="597" alt="스크린샷 2023-11-26 오전 8 10 19" src="https://github.com/DOSOPT-SOPKATHON-WEB4/Web/assets/81505421/2b0936af-3450-4aed-9837-48be618bddf3">
+
+<h3> 2️⃣ 기록 열람 </h3>
+<!-- <img src=""  alt="기능1-대표이미지" /> -->
+<div >카테고리별로 생성된 촛불을 클릭하여 기록을 열람할 수 있다.
+’촛불에 다시 불붙이기’를 통해 마지막 확인 일자를 업데이트할 수 있다.  <br/></div>
+
+![view12](https://github.com/DOSOPT-SOPKATHON-WEB4/Web/assets/81505421/05846924-fafb-4ded-9122-7f1b0bacddd9)
+
+
+
+<h3> 3️⃣ 케이크(기록 목록) </h3>
+<!-- <img src=""  alt="기능1-대표이미지" /> -->
+<div >케이크의 카테고리를 생성할 수 있다.
+케이크에 켜진 촛불은 마지막 확인 일자로부터 경과한 기일에 따라 상태가 변화한다..  <br/></div>
+
+<img width="667" alt="스크린샷 2023-11-26 오전 8 10 49" src="https://github.com/DOSOPT-SOPKATHON-WEB4/Web/assets/81505421/319dc580-fff9-49c0-ac57-bf80c6bdd803">
 
 <br/>
 
@@ -29,23 +43,23 @@
 
 <table align="center">
     <tr align="center">
-        <td style="min-width: 150px;">
+        <td style="min-width: 300px;">
             <a href="https://github.com/lydiacho">
-              <img src="https://velog.velcdn.com/images/aroo_ming/post/6ea71c57-26de-4a87-b5ce-8e7089a98372/image.jpg" width="100">
+              <img src="https://velog.velcdn.com/images/aroo_ming/post/6ea71c57-26de-4a87-b5ce-8e7089a98372/image.jpg" width="300">
               <br />
               <b>조승희</b>
             </a> 
         </td>
-        <td style="min-width: 150px;">
+        <td style="min-width: 300px;">
             <a href="https://github.com/Arooming">
-              <img src="https://velog.velcdn.com/images/aroo_ming/post/8a18c865-6165-40c1-8cd8-7aedff4e9f77/image.jpg" width="100">
+              <img src="https://velog.velcdn.com/images/aroo_ming/post/8a18c865-6165-40c1-8cd8-7aedff4e9f77/image.jpg" width="300">
               <br />
               <b>서아름</b>
             </a>
         </td>
-        <td style="min-width: 150px;">
+        <td style="min-width: 300px;">
             <a href="https://github.com/Jun-min2">
-              <img src="https://velog.velcdn.com/images/aroo_ming/post/9a9628e4-fa23-4a29-9b04-bdc9f03d174c/image.jpg" width="100">
+              <img src="https://velog.velcdn.com/images/aroo_ming/post/9a9628e4-fa23-4a29-9b04-bdc9f03d174c/image.jpg" width="300">
               <br />
               <b>최준민</b>
             </a> 
@@ -74,9 +88,7 @@
             🐵 조승희
         </td>
         <td>
-        - 초기세팅
-        - ~ 뷰 
-        - ~ API
+        초기세팅 / 메인 뷰 / 촛불 추가하기 뷰  / 케이크 조회 API / 촛불 생성 API
         </td>
     </tr>
     <tr align="center">
@@ -84,8 +96,7 @@
             🍩 서아름
         </td>
         <td>
-        - ~ 뷰
-	- ~ API
+        온보딩 뷰 / 케이크 보러가기 뷰 / 케이크 필터링 API
         </td>
     </tr>
     <tr align="center">
@@ -93,8 +104,7 @@
             🎤 최준민
         </td>
         <td>
-          - ~ 뷰
-	        - ~ API
+          케이크 생성 뷰 / 케이크 생성 API
         </td>
     </tr>
 </table>
@@ -236,10 +246,11 @@ custom hooks 정의하는 경우 이곳에서 정의 후 사용
 
 <h2>웨비 Before and After</h2>
 <h3>Before</h3>
-<img src="" alt="웨비 팀원들 사진 (before)"/>
+<img src="https://velog.velcdn.com/images/aroo_ming/post/acb74fdf-14ba-4daa-a8c3-b19896a60dd1/image.jpg" alt="웨비 팀원들 사진 (before)"/>
  
 <h3>After</h3>
 <img src="" alt="웨비 팀원들 사진 (after)"/>
+<img src="https://github.com/DOSOPT-SOPKATHON-WEB4/Web/assets/81505421/8083be3e-d04f-4929-af32-51a101f3a996" alt="웨비 팀원들 사진 (after)"/>
 
 <br />
 
