@@ -22,7 +22,6 @@ const AddTagPage = () => {
   };
   const navigate = useNavigate();
 
-  console.log(slideIndex);
   const handleAddTag = async () => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/cake`, {
@@ -47,16 +46,13 @@ const AddTagPage = () => {
         </St.BackBox>
         <St.AddTagContainer>케이크 추가하기</St.AddTagContainer>
         <St.AddTagWrapper>케이크 이름을 입력해주세요</St.AddTagWrapper>
-        <St.AddTagLayout>
-          <St.TagContainerInput
-            value={slideTitle}
-            onChange={(e) => {
-              setSlideTitle(e.target.value);
-            }}
-            placeholder='입력해주세요'
-          />
-          <St.AddTagBox></St.AddTagBox>
-        </St.AddTagLayout>
+        <St.TagContainerInput
+          value={slideTitle}
+          onChange={(e) => {
+            setSlideTitle(e.target.value);
+          }}
+          placeholder='입력해주세요'
+        />
         <St.SelectTheme>케이크 테마를 선택해주세요</St.SelectTheme>
 
         <St.CarouselBox {...settings}>
@@ -113,14 +109,18 @@ const St = {
     height: 0.2rem;
     width: 17rem;
     background-color: ${({ theme }) => theme.colors.gray3};
-    border-radius: 0.9rem;
   `,
   TagContainerInput: styled.input`
+    height: 3.1rem;
+    margin-left: 10.3rem;
+    margin-top: 4rem;
+
     width: 17rem;
     ${({ theme }) => theme.fonts.s3};
     text-align: center;
     color: ${({ theme }) => theme.colors.gray3};
     border: none;
+    border-bottom: 0.2rem solid ${({ theme }) => theme.colors.gray3};
   `,
   SelectTheme: styled.p`
     ${({ theme }) => theme.fonts.s2};
