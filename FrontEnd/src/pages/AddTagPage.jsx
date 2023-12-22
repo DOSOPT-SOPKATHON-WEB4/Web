@@ -63,13 +63,25 @@ const AddTagPage = () => {
 
           <St.CarouselBox {...settings}>
             <div>
-              <St.CarouselImg src='src/assets/image/cake_new1_blue.png'></St.CarouselImg>
+              {window.innerHeight < 800 ? (
+                <St.CarouselImg src='src/assets/image/cake_new1_se.png'></St.CarouselImg>
+              ) : (
+                <St.CarouselImg src='src/assets/image/cake_new_blue.png'></St.CarouselImg>
+              )}
             </div>
             <div>
-              <St.CarouselImg src='src/assets/image/cake_new1_red.png'></St.CarouselImg>
+              {window.innerHeight < 800 ? (
+                <St.CarouselImg src='src/assets/image/cake_new1_se2.png'></St.CarouselImg>
+              ) : (
+                <St.CarouselImg src='src/assets/image/cake_new_red.png'></St.CarouselImg>
+              )}
             </div>
             <div>
-              <St.CarouselImg src='src/assets/image/cake_new1_green.png'></St.CarouselImg>
+              {window.innerHeight < 800 ? (
+                <St.CarouselImg src='src/assets/image/cake_new1_se3.png'></St.CarouselImg>
+              ) : (
+                <St.CarouselImg src='src/assets/image/cake_new_green.png'></St.CarouselImg>
+              )}
             </div>
           </St.CarouselBox>
         </St.SelectThemeContainer>
@@ -124,10 +136,8 @@ const St = {
   `,
   TagContainerInput: styled.input`
     height: 3.1rem;
-    margin-left: 10.3rem;
-    margin-top: 4rem;
+    margin: 4rem 8.3rem;
 
-    width: 17rem;
     ${({ theme }) => theme.fonts.s3};
     text-align: center;
     color: ${({ theme }) => theme.colors.gray3};
@@ -145,18 +155,36 @@ const St = {
     color: ${({ theme }) => theme.colors.gray1};
   `,
   CarouselBox: styled(Slider)`
-    .slick-list {
-      margin: 0 auto;
+    height: 100%;
+    margin-top: 2.6rem;
+
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+      height: min-content;
     }
     .slick-dots {
-      bottom: -1.6rem;
+      position: static;
+      margin-top: 1.6rem;
+    }
+    .slick-dots li button:before {
+      color: ${({ theme }) => theme.colors.gray5};
+      opacity: 1;
+
+      font-size: 1rem;
+    }
+
+    .slick-dots li.slick-active button:before {
+      color: ${({ theme }) => theme.colors.red};
+      opacity: 1;
     }
   `,
   CarouselImg: styled.img`
-    margin-top: 1.5rem;
-    margin-left: 7.3rem;
-    width: 22.9rem;
-    height: 20rem;
+    width: 30rem;
+
+    @media screen and (max-height: 700px) {
+      width: 22rem;
+    }
   `,
 
   Button: styled.button`
