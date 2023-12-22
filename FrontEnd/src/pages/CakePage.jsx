@@ -3,16 +3,20 @@ import Header from '../components/Cake/Header';
 import Cake from '../components/Cake/Cake';
 import SelectCategory from '../components/Cake/SelectCategory';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const CakePage = () => {
-  const [title, setTitle] = useState('SOPT');
-  const [cakeId, setCakeId] = useState(16);
+  const { state } = useLocation();
+  const { clickedCakeId, cakeTitle } = state;
+
+  const [title, setTitle] = useState(cakeTitle);
+  const [cakeId, setCakeId] = useState(clickedCakeId);
 
   return (
     <St.CakePageContainer>
       <Header title={title} />
-      <Cake title={title} cakeId={cakeId}/>
-      <SelectCategory title={title} setTitle={setTitle} setCakeId={setCakeId}/>
+      <Cake title={title} cakeId={cakeId} />
+      <SelectCategory title={title} setTitle={setTitle} setCakeId={setCakeId} />
     </St.CakePageContainer>
   );
 };
