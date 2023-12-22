@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IcBack } from '../../assets';
 
 const Header = (props) => {
-  // eslint-disable-next-line react/prop-types
   const { title } = props;
 
   return (

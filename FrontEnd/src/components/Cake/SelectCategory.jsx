@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import getCake from '../../api/getCake';
 
 const SelectCategory = (props) => {
-  // eslint-disable-next-line react/prop-types
   const { title, setTitle, setCakeId } = props;
   const [tag, setTag] = useState([]);
   const navigator = useNavigate();

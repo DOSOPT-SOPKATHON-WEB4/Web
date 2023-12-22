@@ -10,7 +10,6 @@ const Cake = (props) => {
   const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
   const [, setIsBurned] = useState(false);
   const [, setCandle] = useState([]);
-  // eslint-disable-next-line react/prop-types
   const { title, cakeId } = props;
 
   useEffect(() => {
