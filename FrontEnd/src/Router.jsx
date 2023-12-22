@@ -7,6 +7,7 @@ import OnboardingPage from './pages/OnboardingPage';
 import CandleDetailPage from './pages/CandleDetailPage';
 import CreateCakePage from './pages/CreateCakePage';
 
+import CreateCakePage from './pages/CreateCakePage';
 const Router = () => {
   return (
     <BrowserRouter>
