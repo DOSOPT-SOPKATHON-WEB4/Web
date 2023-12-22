@@ -37,35 +37,42 @@ const AddTagPage = () => {
   return (
     <>
       <St.Wrapper>
-        <St.BackBox
+        <St.Back
           onClick={() => {
             navigate(-1);
           }}
         >
           <IcBack />
-        </St.BackBox>
-        <St.AddTagContainer>케이크 추가하기</St.AddTagContainer>
-        <St.AddTagWrapper>케이크 이름을 입력해주세요</St.AddTagWrapper>
-        <St.TagContainerInput
-          value={slideTitle}
-          onChange={(e) => {
-            setSlideTitle(e.target.value);
-          }}
-          placeholder='입력해주세요'
-        />
-        <St.SelectTheme>케이크 테마를 선택해주세요</St.SelectTheme>
+        </St.Back>
+        <St.AddCakeContainer>
+          <St.Text>
+            <St.Title>케이크 추가하기</St.Title>
+            <St.Description>케이크 이름을 입력해주세요</St.Description>
+          </St.Text>
 
-        <St.CarouselBox {...settings}>
-          <div>
-            <St.CarouselImg src='src/assets/image/cake_new1_blue.png'></St.CarouselImg>
-          </div>
-          <div>
-            <St.CarouselImg src='src/assets/image/cake_new1_red.png'></St.CarouselImg>
-          </div>
-          <div>
-            <St.CarouselImg src='src/assets/image/cake_new1_green.png'></St.CarouselImg>
-          </div>
-        </St.CarouselBox>
+          <St.TagContainerInput
+            value={slideTitle}
+            onChange={(e) => {
+              setSlideTitle(e.target.value);
+            }}
+            placeholder='입력해주세요'
+          />
+        </St.AddCakeContainer>
+        <St.SelectThemeContainer>
+          <St.ThemeTitle>케이크 테마를 선택해주세요</St.ThemeTitle>
+
+          <St.CarouselBox {...settings}>
+            <div>
+              <St.CarouselImg src='src/assets/image/cake_new1_blue.png'></St.CarouselImg>
+            </div>
+            <div>
+              <St.CarouselImg src='src/assets/image/cake_new1_red.png'></St.CarouselImg>
+            </div>
+            <div>
+              <St.CarouselImg src='src/assets/image/cake_new1_green.png'></St.CarouselImg>
+            </div>
+          </St.CarouselBox>
+        </St.SelectThemeContainer>
 
         <St.Button type='button' onClick={handleAddTag}>
           다음
@@ -88,36 +95,32 @@ const St = {
     height: 100vh;
     padding: 0 2rem 2.6rem 2rem;
   `,
-
-  BackBox: styled.div`
-    margin-top: 1.3rem;
-    margin-left: 1.2rem;
+  Back: styled.div`
+    position: fixed;
+    top: 0;
+    left: 1.2rem;
   `,
-  AddTagContainer: styled.header`
-    margin-top: 2.5rem;
-    margin-left: 2rem;
+  AddCakeContainer: styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin-bottom: 6rem;
+  `,
+  Text: styled.header`
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    margin-top: 5.6rem;
+  `,
+  Title: styled.p`
     ${({ theme }) => theme.fonts.s2};
     color: ${({ theme }) => theme.colors.gray1};
   `,
-  AddTagWrapper: styled.p`
-    margin-top: 0.8rem;
-    margin-left: 2.2rem;
+  Description: styled.p`
     ${({ theme }) => theme.fonts.b2};
     color: ${({ theme }) => theme.colors.gray3};
-  `,
-
-  AddTagLayout: styled.div`
-    width: 17rem;
-    height: 3.1rem;
-    margin-left: 10.3rem;
-    margin-top: 4rem;
-  `,
-
-  AddTagBox: styled.div`
-    margin-top: 0.5rem;
-    height: 0.2rem;
-    width: 17rem;
-    background-color: ${({ theme }) => theme.colors.gray3};
   `,
   TagContainerInput: styled.input`
     height: 3.1rem;
@@ -131,11 +134,15 @@ const St = {
     border: none;
     border-bottom: 0.2rem solid ${({ theme }) => theme.colors.gray3};
   `,
-  SelectTheme: styled.p`
+  SelectThemeContainer: styled.section`
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+  `,
+  ThemeTitle: styled.p`
     ${({ theme }) => theme.fonts.s2};
     color: ${({ theme }) => theme.colors.gray1};
-    margin-top: 6rem;
-    margin-left: 2rem;
   `,
   CarouselBox: styled(Slider)`
     .slick-list {
@@ -151,7 +158,6 @@ const St = {
     width: 22.9rem;
     height: 20rem;
   `,
-  CarouselContainer: styled.div``,
 
   Button: styled.button`
     text-align: center;
