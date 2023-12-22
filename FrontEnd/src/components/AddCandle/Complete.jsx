@@ -45,7 +45,6 @@ const St = {
     align-items: center;
 
     position: relative;
-    width: 33.5rem;
     height: 25.4rem;
 
     background-color: ${({ theme }) => theme.colors.red};

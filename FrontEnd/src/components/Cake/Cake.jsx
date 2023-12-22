@@ -2,9 +2,11 @@ import React from 'react';
 import { CANDLE_POSITION } from '../../constants/constant';
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import getCandle from '../../api/getCandle';
+import getCakeAndCandle from '../../api/getCakeAndCandle';
+import { useNavigate } from 'react-router-dom';
 
 const Cake = (props) => {
+  const navigate = useNavigate();
   const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
   const [, setIsBurned] = useState(false);
   const [, setCandle] = useState([]);
@@ -12,7 +14,7 @@ const Cake = (props) => {
   const { title, cakeId } = props;
 
   useEffect(() => {
-    getCandle(cakeId, setCandle);
+    getCakeAndCandle(cakeId, setCandle);
 
     let randomNum = Math.floor(Math.random() * 8 + 1);
     while (
@@ -43,6 +45,9 @@ const Cake = (props) => {
               src='/candle_on_1.png'
               $left={CANDLE_POSITION[idx].left}
               $bottom={CANDLE_POSITION[idx].bottom}
+              onClick={() => {
+                navigate(`/candle-detail?candleId=${idx}&cakeName=${title}`);
+              }}
             />
           );
         if (it === 0.5)

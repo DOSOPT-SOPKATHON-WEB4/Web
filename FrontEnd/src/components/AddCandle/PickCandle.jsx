@@ -1,68 +1,46 @@
 import styled from 'styled-components';
-import {
-  IcCandle1,
-  IcCandle1Picked,
-  IcCandle2,
-  IcCandle2Picked,
-  IcCandle3,
-  IcCandle3Picked,
-  IcCandle4,
-  IcCandle4Picked,
-  IcCandle5,
-  IcCandle5Picked,
-} from '../../assets';
+import { IcCandle1, IcCandle2, IcCandle3, IcCandle4, IcCandle5, IcCandleFire } from '../../assets';
 import { useState } from 'react';
 
 const PickCandle = ({ setFeel }) => {
   const CANDLE = [
     {
       feel: 'A',
-      default: <IcCandle1 />,
-      picked: <IcCandle1Picked />,
+      icon: <IcCandle1 />,
     },
     {
       feel: 'B',
-      default: <IcCandle2 />,
-      picked: <IcCandle2Picked />,
+      icon: <IcCandle2 />,
     },
     {
       feel: 'C',
-      default: <IcCandle3 />,
-      picked: <IcCandle3Picked />,
+      icon: <IcCandle3 />,
     },
     {
       feel: 'D',
-      default: <IcCandle4 />,
-      picked: <IcCandle4Picked />,
+      icon: <IcCandle4 />,
     },
     {
       feel: 'E',
-      default: <IcCandle5 />,
-      picked: <IcCandle5Picked />,
+      icon: <IcCandle5 />,
     },
   ];
 
   const [selectedCandle, setSelectedCandle] = useState(0);
   return (
     <St.Wrapper>
-      {CANDLE.map((candle, idx) =>
-        idx === selectedCandle ? (
-          <St.Candle key={`${idx}`} $isSelected={idx === selectedCandle}>
-            {candle.picked}
-          </St.Candle>
-        ) : (
-          <St.Candle
-            key={`${idx}picked`}
-            onClick={() => {
-              setSelectedCandle(idx);
-              setFeel(candle.feel);
-            }}
-            $isSelected={idx === selectedCandle}
-          >
-            {candle.default}
-          </St.Candle>
-        ),
-      )}
+      {CANDLE.map((candle, idx) => (
+        <St.CandleChoice
+          key={idx}
+          onClick={() => {
+            setSelectedCandle(idx);
+            setFeel(candle.feel);
+          }}
+        >
+          <St.CandleFire>{idx === selectedCandle && <IcCandleFire />}</St.CandleFire>
+          <div>{candle.icon}</div>
+        </St.CandleChoice>
+      ))}
     </St.Wrapper>
   );
 };
@@ -71,7 +49,8 @@ export default PickCandle;
 
 const St = {
   Wrapper: styled.section`
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 3.7rem;
     justify-content: center;
     margin: 0rem 5rem;
@@ -80,5 +59,15 @@ const St = {
       cursor: pointer;
     }
   `,
-  Candle: styled.div``,
+  CandleChoice: styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+  `,
+  CandleFire: styled.div`
+    position: absolute;
+    top: -0.2rem;
+  `,
 };

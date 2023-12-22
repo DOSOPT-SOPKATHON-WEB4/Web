@@ -11,7 +11,9 @@ const MainPage = () => {
         <St.Button1 type='button' onClick={() => navigate('/add-candle')}>
           새로운 촛불 켜기
         </St.Button1>
-        <St.Button2 type='button'>케이크 보러 가기</St.Button2>
+        <St.Button2 type='button' onClick={() => navigate('/cake')}>
+          케이크 보러 가기
+        </St.Button2>
       </St.ButtonContainer>
     </St.Wrapper>
   );
@@ -47,6 +49,8 @@ const St = {
 
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.s3};
+
+    cursor: pointer;
   `,
   Button2: styled.button`
     padding: 1.6rem 0rem;
@@ -58,5 +62,7 @@ const St = {
 
     color: ${({ theme }) => theme.colors.red};
     ${({ theme }) => theme.fonts.s3};
+
+    cursor: pointer;
   `,
 };

@@ -1,8 +1,21 @@
-import api from './api';
+import axios from 'axios';
+import { useEffect } from 'react';
 
-const getCandle = async (cakeId, setCandle) => {
-  const response = await api.get(`/cake/${cakeId}`);
-  setCandle(response.data.data.candle_list);
+const useGetCandle = (candleId, cakeName, setData) => {
+  const getCandle = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/candle?candleId=${candleId}&cakeName=${cakeName}`,
+      );
+      setData(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getCandle();
+  }, []);
 };
 
-export default getCandle;
+export default useGetCandle;

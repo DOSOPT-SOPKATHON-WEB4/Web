@@ -9,7 +9,7 @@ const PickTag = ({ cakeTitle, setCakeTitle }) => {
   }, []);
   return (
     <St.Wrapper>
-      {tag.slice(0, 5).map((el, idx) => (
+      {tag.map((el, idx) => (
         <St.Card
           type='button'
           key={idx}
@@ -29,11 +29,10 @@ export default PickTag;
 
 const St = {
   Wrapper: styled.section`
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-self: center;
     gap: 1.2rem;
-
-    flex-wrap: wrap;
   `,
   Card: styled.button`
     width: 8rem;
@@ -47,5 +46,7 @@ const St = {
 
     background-color: ${({ theme, $isSelected }) =>
       $isSelected ? theme.colors.red : theme.colors.gray5};
+
+    ${({ theme }) => theme.shadow.shadow};
   `,
 };

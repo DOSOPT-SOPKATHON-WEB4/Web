@@ -8,9 +8,11 @@ import AddTitle from '../components/AddCandle/AddTitle';
 import PickCandle from '../components/AddCandle/PickCandle';
 import Complete from '../components/AddCandle/Complete';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import postCandle from '../api/postCandle';
 
 const AddCandlePage = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [title, setTitle] = useState('');
   const [cakeTitle, setCakeTitle] = useState('');
@@ -19,7 +21,7 @@ const AddCandlePage = () => {
 
   const info = {
     title: title,
-    date: '2023-11-26',
+    date: '2023-12-18',
     cake_title: cakeTitle,
     feel: feel,
     body: body,
@@ -71,7 +73,7 @@ const AddCandlePage = () => {
         <St.Button
           type='button'
           onClick={() => {
-            setStep((step + 1) % 6);
+            step === 5 ? navigate('/cake') : setStep((step + 1) % 6);
           }}
         >
           {step === 5 ? '케이크 보러가기' : '다음'}
