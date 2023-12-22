@@ -37,8 +37,12 @@ const AddTagPage = () => {
 
   return (
     <>
-      <St.AddTag>
-        <St.BackBox>
+      <St.Wrapper>
+        <St.BackBox
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <IcBack />
         </St.BackBox>
         <St.AddTagContainer>케이크 추가하기</St.AddTagContainer>
@@ -70,7 +74,7 @@ const AddTagPage = () => {
         <St.Button type='button' onClick={handleAddTag}>
           다음
         </St.Button>
-      </St.AddTag>
+      </St.Wrapper>
     </>
   );
 };
@@ -78,7 +82,7 @@ const AddTagPage = () => {
 export default AddTagPage;
 
 const St = {
-  AddTag: styled.main``,
+  Wrapper: styled.main``,
 
   BackBox: styled.div`
     margin-top: 1.3rem;
