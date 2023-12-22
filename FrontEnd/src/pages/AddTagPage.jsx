@@ -78,7 +78,16 @@ const AddTagPage = () => {
 export default AddTagPage;
 
 const St = {
-  Wrapper: styled.main``,
+  Wrapper: styled.main`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+
+    height: 100vh;
+    padding: 0 2rem 2.6rem 2rem;
+  `,
 
   BackBox: styled.div`
     margin-top: 1.3rem;
@@ -145,17 +154,18 @@ const St = {
   CarouselContainer: styled.div``,
 
   Button: styled.button`
-    margin-left: 2rem;
-    margin-top: 3.7rem;
-    padding: 2rem 11.7rem;
-    width: 33.5rem;
-    height: 5.6rem;
     text-align: center;
+
+    padding: 1.6rem 0rem;
+    width: 100%;
+
     border: none;
+    border-radius: 10rem;
+    background-color: ${({ theme }) => theme.colors.white};
+
     color: ${({ theme }) => theme.colors.red};
     ${({ theme }) => theme.fonts.s3};
-    background-color: ${({ theme }) => theme.colors.white};
-    border-radius: 10rem;
+
     ${({ theme }) => theme.shadow.shadow};
   `,
 };
