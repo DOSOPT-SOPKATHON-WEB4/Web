@@ -3,63 +3,68 @@ import { CANDLE_POSITION } from '../../constants/constant';
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import getCakeAndCandle from '../../api/getCakeAndCandle';
-import { useNavigate } from 'react-router-dom';
 
 const Cake = (props) => {
-  const navigate = useNavigate();
-  const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
-  const [, setIsBurned] = useState(false);
-  const [, setCandle] = useState([]);
+  // const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
+  const [candle, setCandle] = useState([]);
   const { title, cakeId } = props;
 
+  const setCandleColor = (feel) => {
+    switch (feel) {
+      case 'A':
+        return '/src/assets/image/candle_on_A.png';
+      case 'B':
+        return '/src/assets/image/candle_on_B.png';
+      case 'C':
+        return '/src/assets/image/candle_on_C.png';
+      case 'D':
+        return '/src/assets/image/candle_on_D.png';
+      case 'E':
+        return '/src/assets/image/candle_on_E.png';
+      default:
+        break;
+    }
+  };
+
+  const setCakeColor = (cakeId) => {
+    switch (cakeId % 3) {
+      case 0:
+        return '/src/assets/image/cake_1.png';
+      case 1:
+        return '/src/assets/image/cake_2.png';
+      case 2:
+        return '/src/assets/image/cake_3.png';
+      default:
+        return '/src/assets/image/cake_1.png';
+    }
+  };
+
   useEffect(() => {
-    getCakeAndCandle(cakeId, setCandle);
+    cakeId !== 0 && getCakeAndCandle(cakeId, setCandle);
 
-    let randomNum = Math.floor(Math.random() * 8 + 1);
-    while (
-      checkedCandlePosition[randomNum - 1] === 1 ||
-      checkedCandlePosition[randomNum - 1] === 0.5
-    ) {
-      randomNum = Math.floor(Math.random() * 8 + 1);
-    }
+    // let randomNum = Math.floor(Math.random() * 8 + 1);
+    // while (checkedCandlePosition[randomNum - 1] === 1) {
+    //   randomNum = Math.floor(Math.random() * 8 + 1);
+    // }
 
-    if (checkedCandlePosition[randomNum - 1] === 0.5) {
-      setIsBurned(true);
-    } else {
-      setIsBurned(false);
-    }
-
-    const temp = [...checkedCandlePosition];
-    temp[randomNum - 1] = 1;
-    setCheckedCandlePosition(temp);
+    // const temp = [...checkedCandlePosition];
+    // temp[randomNum - 1] = 1;
+    // setCheckedCandlePosition(temp);
   }, [title]);
 
   return (
     <St.Container>
-      {checkedCandlePosition.map((it, idx) => {
-        if (it === 1)
-          return (
-            <St.Candle
-              key={idx}
-              src='/candle_on_1.png'
-              $left={CANDLE_POSITION[idx].left}
-              $bottom={CANDLE_POSITION[idx].bottom}
-              onClick={() => {
-                navigate(`/candle-detail?candleId=${idx}&cakeName=${title}`);
-              }}
-            />
-          );
-        if (it === 0.5)
-          return (
-            <St.Candle
-              key={idx}
-              src='/candle_off_2.png'
-              $left={CANDLE_POSITION[idx].left}
-              $bottom={CANDLE_POSITION[idx].bottom}
-            />
-          );
+      {candle.map((it, idx) => {
+        return (
+          <St.Candle
+            key={it.id}
+            src={setCandleColor(it.feel)}
+            $left={CANDLE_POSITION[idx + 1].left}
+            $bottom={CANDLE_POSITION[idx + 1].bottom}
+          />
+        );
       })}
-      <St.Cake src='/cake_view9.png' />
+      <St.Cake src={setCakeColor(cakeId)} />
       {/* <St.Toast>사라져가는 촛불이 있어요, 촛불을 눌러서 다시 살려주세요!</St.Toast> */}
     </St.Container>
   );

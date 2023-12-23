@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IcBack } from '../../assets';
+import { useNavigate } from 'react-router-dom';
 
 const Header = (props) => {
   const { title } = props;
+  const navigate = useNavigate();
 
   return (
     <St.Header>
-      <IcBack />
+      <IcBack onClick={() => navigate('/main')} />
       <St.HeaderContents>
         <St.Title>{title}</St.Title>
         <St.Description>을(를) 기념한 케이크에요</St.Description>

@@ -7,15 +7,14 @@ import { useLocation } from 'react-router-dom';
 
 const CakePage = () => {
   const { state } = useLocation();
-  const { clickedCakeId, cakeTitle } = state;
 
-  const [title, setTitle] = useState(cakeTitle);
-  const [cakeId, setCakeId] = useState(clickedCakeId);
+  const [title, setTitle] = useState(state ? state.cakeTitle : '');
+  const [cakeId, setCakeId] = useState(state ? state.clickedCakeId : 0);
 
   return (
     <St.CakePageContainer>
       <Header title={title} />
-      <Cake title={title} cakeId={cakeId} />
+      <Cake title={title} cakeId={cakeId} setTitle={setTitle} />
       <SelectCategory title={title} setTitle={setTitle} setCakeId={setCakeId} />
     </St.CakePageContainer>
   );
