@@ -12,28 +12,16 @@ const PickTag = ({ cakeTitle, setCakeTitle }) => {
       {tag
         .filter((el) => el.candle_count === 0)
         .map((el, idx) => (
-          <>
-            <St.Card
-              type='button'
-              key={idx}
-              onClick={() => {
-                setCakeTitle(el.cake_name);
-              }}
-              $isSelected={cakeTitle === el.cake_name}
-            >
-              {el.cake_name}
-            </St.Card>
-            <St.Card
-              type='button'
-              key={idx}
-              onClick={() => {
-                setCakeTitle(el.cake_name);
-              }}
-              $isSelected={cakeTitle === el.cake_name}
-            >
-              {el.cake_name}
-            </St.Card>
-          </>
+          <St.Card
+            type='button'
+            key={idx}
+            onClick={() => {
+              setCakeTitle(el.cake_name);
+            }}
+            $isSelected={cakeTitle === el.cake_name}
+          >
+            {el.cake_name}
+          </St.Card>
         ))}
     </St.Wrapper>
   );
