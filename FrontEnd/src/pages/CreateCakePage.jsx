@@ -35,7 +35,9 @@ const CreateCakePage = () => {
         )}
         <h2>{title}</h2>
       </St.CakeImg>
-      <St.CakeButton type='button'>케이크 보러가기</St.CakeButton>
+      <St.CakeButton type='button' onClick={() => navigate('/cake')}>
+        케이크 보러가기
+      </St.CakeButton>
     </St.Wrapper>
   );
 };
