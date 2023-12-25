@@ -16,8 +16,8 @@ const AddTagPage = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    beforeChange: (current) => {
-      return setSlideIndex(current);
+    afterChange: (current) => {
+      setSlideIndex(current);
     },
   };
   const navigate = useNavigate();

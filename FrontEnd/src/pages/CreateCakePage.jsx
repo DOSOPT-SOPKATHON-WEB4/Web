@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { IcBack } from '../assets';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
 const CreateCakePage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [title, setTitle] = useState('');
   const [index, setIndex] = useState(0);
@@ -16,7 +17,7 @@ const CreateCakePage = () => {
 
   return (
     <St.Wrapper>
-      <St.BackBox>
+      <St.BackBox onClick={() => navigate(-1)}>
         <IcBack />
       </St.BackBox>
       <div>
