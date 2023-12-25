@@ -9,18 +9,28 @@ const Cake = (props) => {
   const [candle, setCandle] = useState([]);
   const { title, cakeId } = props;
 
-  const setCandleColor = (feel) => {
+  const setCandleColor = (feel, dday) => {
     switch (feel) {
       case 'A':
-        return '/src/assets/image/candle_on_A.png';
+        return dday >= 365
+          ? '/src/assets/image/candle_off_A.png'
+          : '/src/assets/image/candle_on_A.png';
       case 'B':
-        return '/src/assets/image/candle_on_B.png';
+        return dday >= 365
+          ? '/src/assets/image/candle_off_B.png'
+          : '/src/assets/image/candle_on_B.png';
       case 'C':
-        return '/src/assets/image/candle_on_C.png';
+        return dday >= 365
+          ? '/src/assets/image/candle_off_C.png'
+          : '/src/assets/image/candle_on_C.png';
       case 'D':
-        return '/src/assets/image/candle_on_D.png';
+        return dday >= 365
+          ? '/src/assets/image/candle_off_D.png'
+          : '/src/assets/image/candle_on_D.png';
       case 'E':
-        return '/src/assets/image/candle_on_E.png';
+        return dday >= 365
+          ? '/src/assets/image/candle_off_E.png'
+          : '/src/assets/image/candle_on_E.png';
       default:
         break;
     }
@@ -58,7 +68,7 @@ const Cake = (props) => {
         return (
           <St.Candle
             key={it.id}
-            src={setCandleColor(it.feel)}
+            src={setCandleColor(it.feel, it.dday)}
             $left={CANDLE_POSITION[idx + 1].left}
             $bottom={CANDLE_POSITION[idx + 1].bottom}
           />
