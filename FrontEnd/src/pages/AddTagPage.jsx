@@ -28,7 +28,7 @@ const AddTagPage = () => {
         title: slideTitle,
         theme: slideIndex === 0 ? 'BLUE' : slideIndex === 1 ? 'RED' : 'GREEN',
       });
-      response && navigate('/add-cake');
+      response && navigate('/add-cake', { state: { title: slideTitle, index: slideIndex } });
     } catch (e) {
       console.log(e);
     }
