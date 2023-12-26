@@ -2,78 +2,104 @@ import React from 'react';
 import { CANDLE_POSITION } from '../../constants/constant';
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import axios from 'axios';
+import getCakeAndCandle from '../../api/getCakeAndCandle';
+import { IcTalk } from '../../assets';
 import { useNavigate } from 'react-router-dom';
 
 const Cake = (props) => {
   const navigate = useNavigate();
-  const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
-  const [, setIsBurned] = useState(false);
-  // eslint-disable-next-line react/prop-types
-  const { title, setTitle } = props;
+  const [candle, setCandle] = useState([]);
+  const [isBurned, setIsBurned] = useState(false);
+  const { title, cakeId } = props;
+  let checkBurnedCandle = [];
 
-  // 촛불 불러오는 api
-  const getCandle = () => {
-    axios
-      .get(`${import.meta.env.VITE_BASE_URL}/cake/16`, {
-        headers: 'Content-Type: application/json',
-      })
-      .then((res) => {
-        setTitle(res.data.data.cake_title);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const setCandleColor = (feel, dday) => {
+    dday >= 365 ? checkBurnedCandle.push(1) : checkBurnedCandle.push(0);
+
+    switch (feel) {
+      case 'A':
+        return dday >= 365
+          ? '/src/assets/image/candle_off_A.png'
+          : '/src/assets/image/candle_on_A.png';
+      case 'B':
+        return dday >= 365
+          ? '/src/assets/image/candle_off_B.png'
+          : '/src/assets/image/candle_on_B.png';
+      case 'C':
+        return dday >= 365
+          ? '/src/assets/image/candle_off_C.png'
+          : '/src/assets/image/candle_on_C.png';
+      case 'D':
+        return dday >= 365
+          ? '/src/assets/image/candle_off_D.png'
+          : '/src/assets/image/candle_on_D.png';
+      case 'E':
+        return dday >= 365
+          ? '/src/assets/image/candle_off_E.png'
+          : '/src/assets/image/candle_on_E.png';
+      default:
+        break;
+    }
+  };
+
+  const setCakeColor = (cakeId) => {
+    switch (cakeId % 3) {
+      case 0:
+        return '/src/assets/image/cake_1.png';
+      case 1:
+        return '/src/assets/image/cake_2.png';
+      case 2:
+        return '/src/assets/image/cake_3.png';
+      default:
+        return '/src/assets/image/cake_1.png';
+    }
+  };
+
+  const saveTheCandle = (candleId, dday) => {
+    return dday >= 365 && navigate(`/candle-detail`, { state: candleId });
   };
 
   useEffect(() => {
-    getCandle();
-    let randomNum = Math.floor(Math.random() * 8 + 1);
-    while (
-      checkedCandlePosition[randomNum - 1] === 1 ||
-      checkedCandlePosition[randomNum - 1] === 0.5
-    ) {
-      randomNum = Math.floor(Math.random() * 8 + 1);
-    }
+    checkBurnedCandle.includes(1) ? setIsBurned(true) : setIsBurned(false);
+  }, [checkBurnedCandle]);
 
-    if (checkedCandlePosition[randomNum - 1] === 0.5) {
-      setIsBurned(true);
-    } else {
-      setIsBurned(false);
-    }
-
-    const temp = [...checkedCandlePosition];
-    temp[randomNum - 1] = 1;
-    setCheckedCandlePosition(temp);
-  }, [title]);
+  useEffect(() => {
+    cakeId !== 0 && getCakeAndCandle(cakeId, setCandle);
+  }, [title, candle]);
 
   return (
     <St.Container>
-      {checkedCandlePosition.map((it, idx) => {
-        if (it === 1)
-          return (
+      {candle.map((it, idx) => {
+        return (
+          <St.CandleWrapper key={it.id}>
+            {it.dday >= 365 && (
+              <>
+                <St.IconWrapper
+                  $left={CANDLE_POSITION[idx + 1].left - 2.2}
+                  $bottom={CANDLE_POSITION[idx + 1].bottom + 7.8}
+                >
+                  <IcTalk />
+                </St.IconWrapper>
+
+                <St.Message
+                  $left={CANDLE_POSITION[idx + 1].left - 1}
+                  $bottom={CANDLE_POSITION[idx + 1].bottom + 9.1}
+                >
+                  D+ {it.dday}
+                </St.Message>
+              </>
+            )}
             <St.Candle
-              key={idx}
-              src='../public/candle_on_1.png'
-              $left={CANDLE_POSITION[idx].left}
-              $bottom={CANDLE_POSITION[idx].bottom}
-              onClick={() => {
-                navigate(`/candle-detail?candleId=${idx}&cakeName=${title}`);
-              }}
+              src={setCandleColor(it.feel, it.dday)}
+              $left={CANDLE_POSITION[idx + 1].left}
+              $bottom={CANDLE_POSITION[idx + 1].bottom}
+              onClick={() => saveTheCandle(it.id, it.dday)}
             />
-          );
-        if (it === 0.5)
-          return (
-            <St.Candle
-              key={idx}
-              src='../public/candle_off_2.png'
-              $left={CANDLE_POSITION[idx].left}
-              $bottom={CANDLE_POSITION[idx].bottom}
-            />
-          );
+          </St.CandleWrapper>
+        );
       })}
-      <St.Cake src='../public/cake_view9.png' />;
-      {/* <St.Toast>사라져가는 촛불이 있어요, 촛불을 눌러서 다시 살려주세요!</St.Toast> */}
+      <St.Cake src={setCakeColor(cakeId)} />
+      {isBurned && <St.Toast>사라져가는 촛불이 있어요, 촛불을 눌러서 다시 살려주세요!</St.Toast>}
     </St.Container>
   );
 };
@@ -84,7 +110,7 @@ const St = {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 10rem;
+    margin-top: 24.3rem;
 
     position: relative;
     width: 32rem;
@@ -92,6 +118,36 @@ const St = {
   `,
 
   Cake: styled.img``,
+
+  CandleWrapper: styled.div`
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+  `,
+
+  IconWrapper: styled.div`
+    position: absolute;
+    bottom: ${({ $bottom }) => css`
+      ${$bottom}rem
+    `};
+    left: ${({ $left }) => css`
+      ${$left}rem
+    `};
+  `,
+
+  Message: styled.p`
+    position: absolute;
+    bottom: ${({ $bottom }) => css`
+      ${$bottom}rem
+    `};
+    left: ${({ $left }) => css`
+      ${$left}rem
+    `};
+
+    ${({ theme }) => theme.fonts.c1};
+    color: ${({ theme }) => theme.colors.white};
+  `,
 
   Candle: styled.img`
     position: absolute;

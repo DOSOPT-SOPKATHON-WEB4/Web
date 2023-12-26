@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import getCake from '../../api/getCake';
 import { useEffect, useState } from 'react';
 
-const PickTag = ({ cakeTitle, setCakeTitle }) => {
+const PickTag = ({ cakeTitle, setCakeTitle, setCakeId }) => {
   const [tag, setTag] = useState([]);
   useEffect(() => {
     getCake(setTag);
@@ -17,6 +17,7 @@ const PickTag = ({ cakeTitle, setCakeTitle }) => {
             key={idx}
             onClick={() => {
               setCakeTitle(el.cake_name);
+              setCakeId(el.cake_id);
             }}
             $isSelected={cakeTitle === el.cake_name}
           >

@@ -1,30 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-
-const DUMMY = ['시원', 'SOPT', '승희', '다민', '뽀삐'];
+import getCake from '../../api/getCake';
 
 const SelectCategory = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { title } = props;
-  const [, setClickedValue] = useState('');
+  const { title, setTitle, setCakeId } = props;
+  const [tag, setTag] = useState([]);
   const navigator = useNavigate();
 
   const handleClickedBtn = (e) => {
-    setClickedValue(e.target.innerHTML);
+    setTitle(e.target.innerHTML);
+    setCakeId(e.target.id);
   };
 
   const handleClickAddBtn = () => {
     navigator('/add-tag');
   };
 
+  useEffect(() => {
+    getCake(setTag);
+  }, []);
+
   return (
     <St.BottomContainer>
       <St.AddBtn onClick={handleClickAddBtn}>+</St.AddBtn>
-      {DUMMY.map((it, idx) => {
+      {tag.map((it) => {
         return (
-          <St.NameBtn key={idx} $isClicked={it === title} onClick={(e) => handleClickedBtn(e)}>
-            {it}
+          <St.NameBtn
+            key={it.cake_id}
+            id={it.cake_id}
+            $isClicked={title === it.cake_name}
+            onClick={(e) => handleClickedBtn(e)}
+          >
+            {it.cake_name}
           </St.NameBtn>
         );
       })}
@@ -35,17 +43,18 @@ const SelectCategory = (props) => {
 const St = {
   BottomContainer: styled.div`
     display: flex;
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    justify-content: left;
+    align-items: end;
+
+    height: 4rem;
 
     /* 가로 스크롤만 가능하게 */
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
 
-    margin-left: 1.2rem;
-    margin-bottom: 3.1rem;
+    margin-top: 4.6rem;
+    margin-left: 13.2rem;
 
     gap: 0.8rem;
   `,
@@ -63,12 +72,12 @@ const St = {
     width: 8rem;
     height: 4rem;
     border-radius: 10rem;
-    border: 1px solid var(--sub-g-5, #d7d7d7);
-    ${({ theme }) => theme.fonts.s3};
+    border: 1px solid var(--sub-g5, #d7d7d7);
 
+    ${({ theme }) => theme.fonts.s3};
     color: ${({ $isClicked, theme }) => ($isClicked ? theme.colors.white : theme.colors.gray2)};
     background-color: ${({ $isClicked, theme }) =>
-      $isClicked ? theme.colors.red : theme.colors.white};
+      $isClicked ? theme.colors.red : theme.colors.white_80};
   `,
 };
 

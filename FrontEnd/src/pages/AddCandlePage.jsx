@@ -16,6 +16,7 @@ const AddCandlePage = () => {
   const [step, setStep] = useState(0);
   const [title, setTitle] = useState('');
   const [cakeTitle, setCakeTitle] = useState('');
+  const [cakeId, setCakeId] = useState(0);
   const [feel, setFeel] = useState('');
   const [body, setBody] = useState('');
 
@@ -30,7 +31,7 @@ const AddCandlePage = () => {
   const progressArray = new Array(5).fill(false);
   const childrenArray = [
     <PickDate key={0} />,
-    <PickTag key={1} cakeTitle={cakeTitle} setCakeTitle={setCakeTitle} />,
+    <PickTag key={1} cakeTitle={cakeTitle} setCakeTitle={setCakeTitle} setCakeId={setCakeId} />,
     <AddTitle key={2} setTitle={setTitle} />,
     <PickCandle key={3} setFeel={setFeel} />,
     <AddDescription key={4} setBody={setBody} />,
@@ -78,7 +79,9 @@ const AddCandlePage = () => {
         <St.Button
           type='button'
           onClick={() => {
-            step === 5 ? navigate('/cake') : setStep((step + 1) % 6);
+            step === 5
+              ? navigate('/cake', { state: { cakeTitle: cakeTitle, clickedCakeId: cakeId } })
+              : setStep((step + 1) % 6);
           }}
         >
           {step === 5 ? '케이크 보러가기' : '다음'}

@@ -5,13 +5,14 @@ import Text from '../components/CandleDetail/Text';
 import Description from '../components/CandleDetail/Description';
 import LastUpdate from '../components/CandleDetail/LastUpdate';
 import useGetCandle from '../api/getCandle';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 const CandleDetailPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [data, setData] = useState();
-  const candleId = 1; // 추후 수정
+  const { state } = useLocation();
+  const candleId = state;
   const cakeName = searchParams.get('cakeName');
 
   useGetCandle(candleId, cakeName, setData);
