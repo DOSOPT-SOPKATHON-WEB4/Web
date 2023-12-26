@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import getCakeAndCandle from '../../api/getCakeAndCandle';
 import { IcTalk } from '../../assets';
+import { useNavigate } from 'react-router-dom';
 
 const Cake = (props) => {
+  const navigate = useNavigate();
   const [candle, setCandle] = useState([]);
   const [isBurned, setIsBurned] = useState(false);
   const { title, cakeId } = props;
@@ -53,14 +55,17 @@ const Cake = (props) => {
     }
   };
 
+  const saveTheCandle = (candleId, dday) => {
+    return dday >= 365 && navigate(`/candle-detail`, { state: candleId });
+  };
+
   useEffect(() => {
     checkBurnedCandle.includes(1) ? setIsBurned(true) : setIsBurned(false);
   }, [checkBurnedCandle]);
 
   useEffect(() => {
     cakeId !== 0 && getCakeAndCandle(cakeId, setCandle);
-
-  }, [title]);
+  }, [title, candle]);
 
   return (
     <St.Container>
@@ -88,6 +93,7 @@ const Cake = (props) => {
               src={setCandleColor(it.feel, it.dday)}
               $left={CANDLE_POSITION[idx + 1].left}
               $bottom={CANDLE_POSITION[idx + 1].bottom}
+              onClick={() => saveTheCandle(it.id, it.dday)}
             />
           </St.CandleWrapper>
         );
