@@ -3,13 +3,17 @@ import { CANDLE_POSITION } from '../../constants/constant';
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import getCakeAndCandle from '../../api/getCakeAndCandle';
+import { IcTalk } from '../../assets';
 
 const Cake = (props) => {
-  // const [checkedCandlePosition, setCheckedCandlePosition] = useState([0, 1, 0, 1, 1, 0, 1, 0]);
   const [candle, setCandle] = useState([]);
+  const [isBurned, setIsBurned] = useState(false);
   const { title, cakeId } = props;
+  let checkBurnedCandle = [];
 
   const setCandleColor = (feel, dday) => {
+    dday >= 365 ? checkBurnedCandle.push(1) : checkBurnedCandle.push(0);
+
     switch (feel) {
       case 'A':
         return dday >= 365
@@ -50,32 +54,46 @@ const Cake = (props) => {
   };
 
   useEffect(() => {
+    checkBurnedCandle.includes(1) ? setIsBurned(true) : setIsBurned(false);
+  }, [checkBurnedCandle]);
+
+  useEffect(() => {
     cakeId !== 0 && getCakeAndCandle(cakeId, setCandle);
 
-    // let randomNum = Math.floor(Math.random() * 8 + 1);
-    // while (checkedCandlePosition[randomNum - 1] === 1) {
-    //   randomNum = Math.floor(Math.random() * 8 + 1);
-    // }
-
-    // const temp = [...checkedCandlePosition];
-    // temp[randomNum - 1] = 1;
-    // setCheckedCandlePosition(temp);
   }, [title]);
 
   return (
     <St.Container>
       {candle.map((it, idx) => {
         return (
-          <St.Candle
-            key={it.id}
-            src={setCandleColor(it.feel, it.dday)}
-            $left={CANDLE_POSITION[idx + 1].left}
-            $bottom={CANDLE_POSITION[idx + 1].bottom}
-          />
+          <St.CandleWrapper key={it.id}>
+            {it.dday >= 365 && (
+              <>
+                <St.IconWrapper
+                  $left={CANDLE_POSITION[idx + 1].left - 2.2}
+                  $bottom={CANDLE_POSITION[idx + 1].bottom + 7.8}
+                >
+                  <IcTalk />
+                </St.IconWrapper>
+
+                <St.Message
+                  $left={CANDLE_POSITION[idx + 1].left - 1}
+                  $bottom={CANDLE_POSITION[idx + 1].bottom + 9.1}
+                >
+                  D+ {it.dday}
+                </St.Message>
+              </>
+            )}
+            <St.Candle
+              src={setCandleColor(it.feel, it.dday)}
+              $left={CANDLE_POSITION[idx + 1].left}
+              $bottom={CANDLE_POSITION[idx + 1].bottom}
+            />
+          </St.CandleWrapper>
         );
       })}
       <St.Cake src={setCakeColor(cakeId)} />
-      {/* <St.Toast>사라져가는 촛불이 있어요, 촛불을 눌러서 다시 살려주세요!</St.Toast> */}
+      {isBurned && <St.Toast>사라져가는 촛불이 있어요, 촛불을 눌러서 다시 살려주세요!</St.Toast>}
     </St.Container>
   );
 };
@@ -94,6 +112,36 @@ const St = {
   `,
 
   Cake: styled.img``,
+
+  CandleWrapper: styled.div`
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+  `,
+
+  IconWrapper: styled.div`
+    position: absolute;
+    bottom: ${({ $bottom }) => css`
+      ${$bottom}rem
+    `};
+    left: ${({ $left }) => css`
+      ${$left}rem
+    `};
+  `,
+
+  Message: styled.p`
+    position: absolute;
+    bottom: ${({ $bottom }) => css`
+      ${$bottom}rem
+    `};
+    left: ${({ $left }) => css`
+      ${$left}rem
+    `};
+
+    ${({ theme }) => theme.fonts.c1};
+    color: ${({ theme }) => theme.colors.white};
+  `,
 
   Candle: styled.img`
     position: absolute;
