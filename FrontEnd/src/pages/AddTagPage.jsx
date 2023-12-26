@@ -16,20 +16,19 @@ const AddTagPage = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    beforeChange: (current) => {
-      return setSlideIndex(current);
+    afterChange: (current) => {
+      setSlideIndex(current);
     },
   };
   const navigate = useNavigate();
 
-  console.log(slideIndex);
   const handleAddTag = async () => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/cake`, {
         title: slideTitle,
         theme: slideIndex === 0 ? 'BLUE' : slideIndex === 1 ? 'RED' : 'GREEN',
       });
-      response && navigate('/add-cake');
+      response && navigate('/add-cake', { state: { title: slideTitle, index: slideIndex } });
     } catch (e) {
       console.log(e);
     }
@@ -37,13 +36,20 @@ const AddTagPage = () => {
 
   return (
     <>
-      <St.AddTag>
-        <St.BackBox>
+      <St.Wrapper>
+        <St.Back
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <IcBack />
-        </St.BackBox>
-        <St.AddTagContainer>케이크 추가하기</St.AddTagContainer>
-        <St.AddTagWrapper>케이크 이름을 입력해주세요</St.AddTagWrapper>
-        <St.AddTagLayout>
+        </St.Back>
+        <St.AddCakeContainer>
+          <St.Text>
+            <St.Title>케이크 추가하기</St.Title>
+            <St.Description>케이크 이름을 입력해주세요</St.Description>
+          </St.Text>
+
           <St.TagContainerInput
             value={slideTitle}
             onChange={(e) => {
@@ -51,26 +57,39 @@ const AddTagPage = () => {
             }}
             placeholder='입력해주세요'
           />
-          <St.AddTagBox></St.AddTagBox>
-        </St.AddTagLayout>
-        <St.SelectTheme>케이크 테마를 선택해주세요</St.SelectTheme>
+        </St.AddCakeContainer>
+        <St.SelectThemeContainer>
+          <St.ThemeTitle>케이크 테마를 선택해주세요</St.ThemeTitle>
 
-        <St.CarouselBox {...settings}>
-          <div>
-            <St.CarouselImg src='src/assets/image/cake_new1_blue.png'></St.CarouselImg>
-          </div>
-          <div>
-            <St.CarouselImg src='src/assets/image/cake_new1_red.png'></St.CarouselImg>
-          </div>
-          <div>
-            <St.CarouselImg src='src/assets/image/cake_new1_green.png'></St.CarouselImg>
-          </div>
-        </St.CarouselBox>
+          <St.CarouselBox {...settings}>
+            <div>
+              {window.innerHeight < 800 ? (
+                <St.CarouselImg src='src/assets/image/cake_new1_se.png'></St.CarouselImg>
+              ) : (
+                <St.CarouselImg src='src/assets/image/cake_new_blue.png'></St.CarouselImg>
+              )}
+            </div>
+            <div>
+              {window.innerHeight < 800 ? (
+                <St.CarouselImg src='src/assets/image/cake_new1_se2.png'></St.CarouselImg>
+              ) : (
+                <St.CarouselImg src='src/assets/image/cake_new_red.png'></St.CarouselImg>
+              )}
+            </div>
+            <div>
+              {window.innerHeight < 800 ? (
+                <St.CarouselImg src='src/assets/image/cake_new1_se3.png'></St.CarouselImg>
+              ) : (
+                <St.CarouselImg src='src/assets/image/cake_new_green.png'></St.CarouselImg>
+              )}
+            </div>
+          </St.CarouselBox>
+        </St.SelectThemeContainer>
 
         <St.Button type='button' onClick={handleAddTag}>
           다음
         </St.Button>
-      </St.AddTag>
+      </St.Wrapper>
     </>
   );
 };
@@ -78,80 +97,109 @@ const AddTagPage = () => {
 export default AddTagPage;
 
 const St = {
-  AddTag: styled.main``,
+  Wrapper: styled.main`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-  BackBox: styled.div`
-    margin-top: 1.3rem;
-    margin-left: 1.2rem;
+    width: 100%;
+
+    height: 100vh;
+    padding: 0 2rem 2.6rem 2rem;
   `,
-  AddTagContainer: styled.header`
-    margin-top: 2.5rem;
-    margin-left: 2rem;
+  Back: styled.div`
+    position: fixed;
+    top: 0;
+    left: 1.2rem;
+  `,
+  AddCakeContainer: styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin-bottom: 6rem;
+  `,
+  Text: styled.header`
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    margin-top: 5.6rem;
+  `,
+  Title: styled.p`
     ${({ theme }) => theme.fonts.s2};
     color: ${({ theme }) => theme.colors.gray1};
   `,
-  AddTagWrapper: styled.p`
-    margin-top: 0.8rem;
-    margin-left: 2.2rem;
+  Description: styled.p`
     ${({ theme }) => theme.fonts.b2};
     color: ${({ theme }) => theme.colors.gray3};
   `,
-
-  AddTagLayout: styled.div`
-    width: 17rem;
-    height: 3.1rem;
-    margin-left: 10.3rem;
-    margin-top: 4rem;
-  `,
-
-  AddTagBox: styled.div`
-    margin-top: 0.5rem;
-    height: 0.2rem;
-    width: 17rem;
-    background-color: ${({ theme }) => theme.colors.gray3};
-    border-radius: 0.9rem;
-  `,
   TagContainerInput: styled.input`
-    width: 17rem;
+    height: 3.1rem;
+    margin: 4rem 8.3rem;
+
     ${({ theme }) => theme.fonts.s3};
     text-align: center;
     color: ${({ theme }) => theme.colors.gray3};
     border: none;
+    border-bottom: 0.2rem solid ${({ theme }) => theme.colors.gray3};
   `,
-  SelectTheme: styled.p`
+  SelectThemeContainer: styled.section`
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+  `,
+  ThemeTitle: styled.p`
     ${({ theme }) => theme.fonts.s2};
     color: ${({ theme }) => theme.colors.gray1};
-    margin-top: 6rem;
-    margin-left: 2rem;
   `,
   CarouselBox: styled(Slider)`
-    .slick-list {
-      margin: 0 auto;
+    height: 100%;
+    margin-top: 2.6rem;
+
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+      height: min-content;
     }
     .slick-dots {
-      bottom: -1.6rem;
+      position: static;
+      margin-top: 1.6rem;
+    }
+    .slick-dots li button:before {
+      color: ${({ theme }) => theme.colors.gray5};
+      opacity: 1;
+
+      font-size: 1rem;
+    }
+
+    .slick-dots li.slick-active button:before {
+      color: ${({ theme }) => theme.colors.red};
+      opacity: 1;
     }
   `,
   CarouselImg: styled.img`
-    margin-top: 1.5rem;
-    margin-left: 7.3rem;
-    width: 22.9rem;
-    height: 20rem;
+    width: 30rem;
+
+    @media screen and (max-height: 700px) {
+      width: 22rem;
+    }
   `,
-  CarouselContainer: styled.div``,
 
   Button: styled.button`
-    margin-left: 2rem;
-    margin-top: 3.7rem;
-    padding: 2rem 11.7rem;
-    width: 33.5rem;
-    height: 5.6rem;
     text-align: center;
+
+    padding: 1.6rem 0rem;
+    width: 100%;
+
     border: none;
+    border-radius: 10rem;
+    background-color: ${({ theme }) => theme.colors.white};
+
     color: ${({ theme }) => theme.colors.red};
     ${({ theme }) => theme.fonts.s3};
-    background-color: ${({ theme }) => theme.colors.white};
-    border-radius: 10rem;
+
     ${({ theme }) => theme.shadow.shadow};
   `,
 };

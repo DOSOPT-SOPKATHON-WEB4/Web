@@ -41,7 +41,12 @@ const AddCandlePage = () => {
     <St.Wrapper>
       <div>
         <St.Header>
-          <IcBack onClick={() => setStep(step - 1)} />
+          <IcBack
+            onClick={() => {
+              if (step === 0) navigate('/main');
+              setStep(step - 1);
+            }}
+          />
           {step !== 5 && (
             <St.ProgressBar>
               {progressArray
