@@ -29,7 +29,7 @@ const St = {
     width: 100%;
     height: 100dvh;
 
-    overflow-y: hidden;
+    overflow: hidden;
   `,
 };
 
