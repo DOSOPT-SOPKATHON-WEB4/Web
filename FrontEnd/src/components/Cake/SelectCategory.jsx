@@ -43,34 +43,40 @@ const SelectCategory = (props) => {
 const St = {
   BottomContainer: styled.div`
     display: flex;
-    justify-content: left;
-    align-items: end;
+    align-items: flex-start;
 
-    height: 4rem;
+    width: 100%;
+    margin: 4.6rem 0.8rem 0 1.2rem;
+    padding-bottom: 0.75rem;
 
     /* 가로 스크롤만 가능하게 */
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-
-    margin-top: 4.6rem;
-    margin-left: 13.2rem;
-
-    gap: 0.8rem;
   `,
+
   AddBtn: styled.button`
+    flex-shrink: 0;
+
     width: 4rem;
     height: 4rem;
+    margin-right: 0.8rem;
+
     border: none;
     border-radius: 3rem;
+
     background-color: ${({ theme }) => theme.colors.gray4};
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.s3};
   `,
 
   NameBtn: styled.button`
+    flex-shrink: 0;
+
     width: 8rem;
     height: 4rem;
+    margin-right: 0.8rem;
+
     border-radius: 10rem;
     border: 1px solid var(--sub-g5, #d7d7d7);
 
