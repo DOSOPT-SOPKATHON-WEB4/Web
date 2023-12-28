@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 const CakePage = () => {
   const { state } = useLocation();
 
-  const [title, setTitle] = useState(state ? state.cakeTitle : '');
+  const [title, setTitle] = useState(state ? state.cakeTitle : '학교');
   const [cakeId, setCakeId] = useState(state ? state.clickedCakeId : 0);
 
   return (

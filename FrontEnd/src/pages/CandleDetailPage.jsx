@@ -5,15 +5,14 @@ import Text from '../components/CandleDetail/Text';
 import Description from '../components/CandleDetail/Description';
 import LastUpdate from '../components/CandleDetail/LastUpdate';
 import useGetCandle from '../api/getCandle';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CandleDetailPage = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
   const [data, setData] = useState();
   const { state } = useLocation();
-  const candleId = state;
-  const cakeName = searchParams.get('cakeName');
+  const candleId = state.idx;
+  const cakeName = state.title;
 
   useGetCandle(candleId, cakeName, setData);
 
@@ -23,6 +22,7 @@ const CandleDetailPage = () => {
     // 돌아갈 때마다 촛불 위치가 변하는 이슈
   };
 
+  console.log(data);
   return (
     data && (
       <St.Wrapper>

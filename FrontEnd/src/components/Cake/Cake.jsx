@@ -56,7 +56,7 @@ const Cake = (props) => {
   };
 
   const saveTheCandle = (candleId, dday) => {
-    return dday >= 365 && navigate(`/candle-detail`, { state: candleId });
+    return dday >= 365 && navigate(`/candle-detail`, { state: { title: title, idx: candleId } });
   };
 
   useEffect(() => {
