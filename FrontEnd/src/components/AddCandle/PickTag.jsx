@@ -10,7 +10,8 @@ const PickTag = ({ cakeTitle, setCakeTitle, setCakeId }) => {
   return (
     <St.Wrapper>
       {tag
-        .filter((el) => el.candle_count === 0)
+      // 기존 코드대로 하면, 이미 추가해둔 태그가 제대로 화면에 띄워지지 않는 문제 발생 -> filter 조건 수정해줌.
+        .filter((el) => el.candle_count < 8)
         .map((el, idx) => (
           <St.Card
             type='button'
