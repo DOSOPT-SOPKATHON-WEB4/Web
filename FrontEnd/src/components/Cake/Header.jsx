@@ -11,14 +11,8 @@ const Header = (props) => {
     <St.Header>
       <IcBack onClick={() => navigate('/main')} />
       <St.HeaderContents>
-        {title === '' ? (
-          <St.Description>케이크를 선택해주세요</St.Description>
-        ) : (
-          <>
             <St.Title>{title}</St.Title>
             <St.Description>을(를) 기념한 케이크에요</St.Description>
-          </>
-        )}
       </St.HeaderContents>
     </St.Header>
   );

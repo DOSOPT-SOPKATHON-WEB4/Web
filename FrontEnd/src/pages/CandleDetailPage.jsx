@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import Text from '../components/CandleDetail/Text';
 import Description from '../components/CandleDetail/Description';
 import LastUpdate from '../components/CandleDetail/LastUpdate';
-import useGetCandle from '../api/patchCandle';
+import useGetCandle from '../api/getCandle';
+import patchCandle from '../api/patchCandle';
 import { useLocation } from 'react-router-dom';
 
 const CandleDetailPage = () => {
@@ -16,10 +17,9 @@ const CandleDetailPage = () => {
   useGetCandle(candleId, cakeName, setData);
 
   const resetCandle = () => {
-    useGetCandle(candleId);
+    patchCandle(candleId);
   };
 
-  console.log(data);
   return (
     data && (
       <St.Wrapper>
