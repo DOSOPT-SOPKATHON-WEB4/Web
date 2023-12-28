@@ -4,11 +4,10 @@ import styled from 'styled-components';
 import Text from '../components/CandleDetail/Text';
 import Description from '../components/CandleDetail/Description';
 import LastUpdate from '../components/CandleDetail/LastUpdate';
-import useGetCandle from '../api/getCandle';
-import { useLocation, useNavigate } from 'react-router-dom';
+import useGetCandle from '../api/patchCandle';
+import { useLocation } from 'react-router-dom';
 
 const CandleDetailPage = () => {
-  const navigate = useNavigate();
   const [data, setData] = useState();
   const { state } = useLocation();
   const candleId = state.idx;
@@ -17,9 +16,7 @@ const CandleDetailPage = () => {
   useGetCandle(candleId, cakeName, setData);
 
   const resetCandle = () => {
-    navigate(-1);
-    // 다시 돌아갔을 땐 촛불이 reset되어야함. 해당 부분 아름이와 논의
-    // 돌아갈 때마다 촛불 위치가 변하는 이슈
+    useGetCandle(candleId);
   };
 
   console.log(data);
