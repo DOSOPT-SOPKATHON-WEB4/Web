@@ -55,8 +55,9 @@ const Cake = (props) => {
     }
   };
 
-  const saveTheCandle = (candleId, dday) => {
-    return dday >= 365 && navigate(`/candle-detail`, { state: { title: title, idx: candleId } });
+  // 일단 현재는 1년이 지나지 않은 촛불도 조회 가능하도록 코드 수정
+  const saveTheCandle = (candleId) => {
+    return navigate(`/candle-detail`, { state: { title: title, idx: candleId } });
   };
 
   useEffect(() => {
@@ -75,15 +76,15 @@ const Cake = (props) => {
             {it.dday >= 365 && (
               <>
                 <St.IconWrapper
-                  $left={CANDLE_POSITION[idx + 1].left - 2.2}
-                  $bottom={CANDLE_POSITION[idx + 1].bottom + 7.8}
+                  $left={CANDLE_POSITION[idx].left - 2.2}
+                  $bottom={CANDLE_POSITION[idx].bottom + 7.8}
                 >
                   <IcTalk />
                 </St.IconWrapper>
 
                 <St.Message
-                  $left={CANDLE_POSITION[idx + 1].left - 1}
-                  $bottom={CANDLE_POSITION[idx + 1].bottom + 9.1}
+                  $left={CANDLE_POSITION[idx].left - 1}
+                  $bottom={CANDLE_POSITION[idx].bottom + 9.1}
                 >
                   D+ {it.dday}
                 </St.Message>
@@ -91,9 +92,9 @@ const Cake = (props) => {
             )}
             <St.Candle
               src={setCandleColor(it.feel, it.dday)}
-              $left={CANDLE_POSITION[idx + 1].left}
-              $bottom={CANDLE_POSITION[idx + 1].bottom}
-              onClick={() => saveTheCandle(it.id, it.dday)}
+              $left={CANDLE_POSITION[idx].left}
+              $bottom={CANDLE_POSITION[idx].bottom}
+              onClick={() => saveTheCandle(it.id)}
             />
           </St.CandleWrapper>
         );
