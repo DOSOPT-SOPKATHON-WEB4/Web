@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import getCake from '../../api/getCake';
 
 const SelectCategory = (props) => {
-  const { title, setTitle, setCakeId } = props;
-  const [tag, setTag] = useState([]);
+  const { title, setTitle, setCakeId, tag } = props;
   const navigator = useNavigate();
 
   const handleClickedBtn = (e) => {
@@ -16,10 +13,6 @@ const SelectCategory = (props) => {
   const handleClickAddBtn = () => {
     navigator('/add-tag');
   };
-
-  useEffect(() => {
-    getCake(setTag);
-  }, []);
 
   return (
     <St.BottomContainer>
